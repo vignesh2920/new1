@@ -1,0 +1,73 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.upda-nav {
+    height: 60px;
+    width: 100vw;
+    background-color: #063a7e;
+    display: flex;
+}
+
+.upda-logo {
+    margin-top: 5px;
+    margin-left: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.upda-logout-area {
+    margin-left: 1200px;
+    margin-top: 14px;
+}
+
+.upda-logout-btn {
+    font-weight: 500;
+    width: 80px;
+    height: 32px;
+    background-color: rgb(248, 255, 205);
+    border-radius: 8px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
+
+.upda-main-body {
+    min-height: 100vh;
+}
+
+.upda-quest-list-const {
+    margin-top: 50px;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+
+.upda-all-list {
+    width: 900px;
+    height: 600px;
+    background-color: #063a7e;
+}
+
+
+.upda-bo-box {
+    margin: 10px;
+    width: 500px;
+    height: 80px;
+    background-color: red;
+}
+
+.upda-footer{
+    margin-top: -47px;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+

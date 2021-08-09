@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc9ument</title>
+    <link rel="stylesheet" href="/css/createtest.css">
+</head>
+<body>
+
+    <div class="ct-main-contt">
+    <div class="ct-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="ct-logo">
+        <div class="ct-logout-area">
+           <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="ct-logout-btn" type="submit">Log Out</button>
+         </form>
+      </div>
+    </div>
+
+    <% if(errMess) { %>
+      <div class="message red">
+         <b>NOTE :</b> <%= errMess %>
+      </div>
+      <% } else { %>
+      <div class="message">
+         <b>NOTE :</b> RoomID can't change and Teacher is requied   
+      </div>
+      <% } %>
+ 
+    <div class="ct-req-cont">
+        <form action="/rooms/roomid" method="post" >
+         <input type="hidden" name="id" value="<%= roominfo._id %>">
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="ct-form">
+               <div class="form-div">
+                   <div>
+                       <label for="RoomID">Enter RoomID</label>
+                       <input type="text" name="RoomID" id="RoomID" value="<%= roominfo.roomId %>" required readonly>
+                    </div>
+                    <div>
+                       <label for="teacher">Enter teacher</label>
+                       <input type="text" name="teacher" id="teacher" value="<%= roominfo.teacher %>"  required>
+                    </div>
+               </div>
+            
+             <div class="gap-acc"></div>
+                    <% for(let i = 0; i < 48; i += 2) { %>
+             <div class="form-div">
+                <div>
+                   <label for="stud-<%= i + 1 %>-room"><%= i + 1 %>) Student Reg.no</label>
+                   <% if(roominfo.students[i]) { %>
+                     <input 
+                     type="text" 
+                     name="stud-<%= i + 1 %>-room" 
+                     id="stud-<%= i + 1 %>-room" 
+                     value="<%= roominfo.students[i].RegNo %>"
+                     placeholder="Student Reg.No.<%= i %>">    
+                   <% } else { %>
+                     <input 
+                     type="text" 
+                     name="stud-<%= i + 1 %>-room" 
+                     id="stud-<%= i + 1 %>-room" 
+                     value=""
+                     placeholder="Student Reg.No.<%= i %>">
+                     <% } %>
+                </div>
+                <div>
+                   <label for="stud-<%= i + 2 %>-room"><%= i + 2 %>) Student Reg.no</label>
+                   <% if(roominfo.students[i+1]) { %>
+                     <input 
+                     type="text" 
+                     name="stud-<%= i + 2 %>-room" 
+                     id="stud-<%= i + 2 %>-room" 
+                     value="<%= roominfo.students[i+1].RegNo %>"
+                     placeholder="Student Reg.No.<%= i+2 %>"> 
+                     <% } else { %>
+                        <input 
+                        type="text" 
+                        name="stud-<%= i + 2 %>-room" 
+                        id="stud-<%= i + 2 %>-room" 
+                        value=""
+                        placeholder="Student Reg.No.<%= i + 2 %>">
+                        <% } %>                
+                </div>        
+             </div>
+             <% } %>    
+              <div class="form-div">
+                <div>
+                    <label for="stud-49-room">49) Student Reg.no</label>
+                    <% if(roominfo.students[48]) { %>
+                      <input 
+                      type="text" 
+                      name="stud-49-room" 
+                      id="stud-48-room" 
+                      value="<%= roominfo.students[48].RegNo %>"
+                      placeholder="Student Reg.No.49">  
+                      <% } else { %>
+                        <input 
+                        type="text" 
+                        name="stud-49-room" 
+                        id="stud-49-room" 
+                        value=""
+                        placeholder="Student Reg.No.49">
+                        <% } %>                         
+                 </div>   
+                 <div>
+                    <input type="hidden" name="createstaff" id="staff" value="Sanajy" required readonly>
+                 </div>
+            </div>
+
+            <div class="form-div">
+                <div class="radio--1">
+                      <input
+                      id="oo-save" 
+                      type="radio" 
+                      name="todo" 
+                      value="save" required> 
+                      <label for="oo-save">SAVE</label>          
+                 </div>   
+                 <div class="radio--1">
+                    <input
+                    id="oo-dele" 
+                    type="radio" 
+                    name="todo" 
+                    value="delete" required>
+                    <label for="oo-dele">DELETE</label>  
+                 </div>
+            </div>
+
+              <div class="ct-f-btn"><button type="submit">Start</button></div>
+          </div>
+         
+        </form>
+    </div>
+</div>
+<div class="ctt-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

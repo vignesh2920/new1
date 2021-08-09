@@ -1,0 +1,119 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.home-nav {
+    height: 60px;
+    width: 100vw;
+    background-color: #063a7e;
+    display: flex;
+}
+
+.home-logo {
+    margin-top: 5px;
+    margin-left: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.home-logout-area {
+    margin-left: 1200px;
+    margin-top: 14px;
+}
+
+.home-logout-btn {
+    font-weight: 500;
+    width: 80px;
+    height: 32px;
+    background-color: rgb(248, 255, 205);
+    border-radius: 8px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
+
+.home-1row {
+    display: flex;
+     height: 300px;
+     width: 100vw;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.home-body-cont{
+    margin-top: 40px;
+    margin-left: 38px;
+    height: 240px;
+    width: 175px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-body-cont:hover {
+    border-top: 4px solid rgb(94, 134, 255);
+}
+
+
+.home-svg{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 175px;
+    height: 200px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    background-color: aliceblue;
+}
+
+.home-svg-text {
+    color: white;
+    text-align: center;
+    margin-top: -5px;
+    padding-top: 10px; 
+    width: 176px;
+    height: 31px;
+    background-color: #063a7e;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.home-footer{
+    padding-top: 10px;
+    text-align: center;
+    position: fixed;
+    color: white;
+    bottom: 0;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+
+.home-2row {
+    margin-top: 50px;
+    width: 100vw;
+    height: 300px;
+    display: grid;
+    place-items: center;
+}
+
+.message {
+    width: 500px;
+    font-size: 19px;
+    font-weight: 600;
+    height: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(214, 255, 196);
+    box-shadow: 0px 0px 6px rgba(37, 124, 0, 0.4);
+    text-align: center;
+    border-radius: 20px;
+}

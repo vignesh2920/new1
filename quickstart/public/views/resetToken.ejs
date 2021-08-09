@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | SRM UNIVERSITY</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+     <div class="login-body">
+         <div class="login-container">
+            <img src="/loginlogo.png" alt="" srcset="" class="login-header">
+            <div class="login-form">
+                <div class="log-form-text">Create Password</div>
+                <form action="/forgotpassword/token" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="userId" value="<%= userId %>">
+                    <input type="hidden" name="token" value="<%= token %>">
+                    <div><label for="login-email">New Password</label></div>
+                    <div><input type="text" name="newpass" class="login-input" id="login-email" minlength="8" maxlength="12" required placeholder="New password"></div>
+                    <div><label for="password">Conform Password</label></div>
+                    <div><input type="password" name="conpass" class="login-input" id="password" minlength="8" maxlength="12" required placeholder="Conform Password"></div>
+                   
+                    <div><button type="submit" class="login-btn">Reset</button></div>
+                </form>
+            </div>
+            <div class="login-reg-for">
+            </div>
+
+            <% if(errorMess) { %>
+                <div class="log-err"><%= errorMess %></div>
+                <% } %> 
+           
+         </div>
+         <div class="login-footer">&#169 Copyright SRM UNIVERSITY</div>
+     </div>
+
+</body>
+</html>

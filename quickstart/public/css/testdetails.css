@@ -1,0 +1,348 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.exam-body-testdet {
+    display: block;
+}
+
+.testdet-nav {
+    height: 60px;
+    width: 100vw;
+    background-color: #063a7e;
+    display: flex;
+}
+
+.testdet-logo {
+    margin-top: 5px;
+    margin-left: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.testdet-logout-area {
+    margin-left: 1200px;
+    margin-top: 14px;
+}
+
+.testdet-logout-btn {
+    font-weight: 500;
+    width: 80px;
+    height: 32px;
+    background-color: rgb(248, 255, 205);
+    border-radius: 8px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
+
+.testdet-body {
+    width: 100vw;
+    height: 600px;
+    display: grid;
+    place-items: center;
+}
+
+.td-body-cont {
+    width: 1000px;
+    height: 550px;
+    background-color: rgb(253, 255, 241);
+    box-shadow: 0px 0px 10px rgba(71, 51, 51, 0.8);
+    border-radius: 5px;
+}
+
+.td-cont-head {
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    width: 1000px;
+    height: 35px;
+    background-color: #063a7e;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.td-cont-body-exam {
+    width: 1000px;
+    height: 130px;
+    display: grid;
+    place-items: center;
+}
+
+.td-c-b-exam-info {
+    width: 900px;
+    height: 112px;
+    box-shadow: 0px 0px 2px rgba(6, 58, 126, 0.9);
+    border-radius: 2px;
+}
+
+.td-c-b-e-i-nadu-namecode {
+    width: 900px;
+    height: 28px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+    background-color: rgb(241, 247, 255);
+    display: flex;
+}
+
+.td-c-b-e-i-nadu-duration {
+    width: 900px;
+    height: 28px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+    background-color: white;
+    display: flex;
+}
+
+.td-c-b-e-i-mast-mark {
+    width: 900px;
+    height: 28px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+    background-color: rgb(241, 247, 255);
+    display: flex;
+}
+
+.td-c-b-e-i-mast-starttime {
+    width: 900px;
+    height: 28px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+    background-color: white;
+    display: flex;
+}
+
+.td-c-b-e-i-he {
+    text-align: center;
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.9);
+    color: white;
+    width: 200px;
+    height: 28px;
+    background-color: #063a7e;
+}
+
+.td-top-left {
+    border-top-left-radius: 2px;
+}
+
+.td-bottom-right {
+    border-bottom-left-radius: 2px;
+}
+
+.td-c-b-e-i-he-cont {
+    width: 600px;
+    height: 28px;
+    margin-left: 10px;
+}
+
+
+.td-cont-body-gend {
+    width: 1000px;
+    height: 170px;
+    display: grid;
+    place-items: center;
+}
+
+.td-c-b-gend-info {
+    width: 900px;
+    height: 170px;
+    background-color: #063a7e;
+    color: white;
+    box-shadow: 0px 0px 2px rgba(6, 58, 126, 0.9);
+    border-radius: 2px;
+}
+
+.td-d-b-g-i-gend {
+    margin-left: 2px;
+    margin-top: 11px;
+    width: 897px;
+    height: 135px;
+    background-color: white;
+    font-family: monospace;
+    color: #000;
+    font-size: 15px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.td-d-b-g-i-gend span {
+    font-weight: 500;
+  
+}
+
+.td-cont-body-staff {
+    width: 1000px;
+    height: 130px;
+    display: grid;
+    place-items: center;
+}
+
+.td-c-b-staff-info {
+    width: 900px;
+    height: 103px;
+    background-color: white;
+    box-shadow: 0px 0px 2px rgba(6, 58, 126, 0.9);
+    border-radius: 2px;
+    display: flex;
+}
+
+.td-c-b-s-i-h1 {
+    color: white;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    width: 200px;
+    height: 103px;
+    background-color: #063a7e;
+}
+
+.td-c-b-s-i-h2 {
+    width: 200px;
+    height: 103px;
+}
+
+.td-c-b-s-i-h2 div {
+    padding-top: 4px;
+    padding-left: 10px;
+    height: 30px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+}
+
+
+.td-c-b-s-i-h3 {
+    width: 500px;
+    height: 103px;
+}
+
+.td-c-b-s-i-h3 div {
+    padding-top: 4px;
+    padding-left: 10px;
+    height: 30px;
+     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.9);
+}
+
+.td--ib {
+    background-color: rgb(241, 247, 255); 
+}
+
+.td-cont-btn-time {
+    width: 1000px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+}
+
+.td-c-btn-time-count {
+    font-size: 24px;
+    font-weight: 600;
+    color: #063a7e;
+}
+
+.td-c-b-t-togg button {
+    background-color: #063a7e;
+    color: white;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+}
+
+.testdet-footer{
+    padding-top: 10px;
+    text-align: center;
+    position: fixed;
+    color: white;
+    bottom: 0;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+
+.msg-info-of-ans {
+    position: fixed;
+    top: 140px;
+    right: 0px;
+    width: 220px;
+    height: 550px;
+}
+
+.succ-fail-msg {
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.4);
+    border-radius: 40px 0px 0px 40px;
+    width: 220px;
+    height: 28px;
+    background-color: rgb(153, 255, 153);
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(14, 37, 0) 0px 0 8px;
+    font-size: 17px;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.succ-fail-msg-f {
+    box-shadow: 0px 0px 5px rgba(0, 255, 0, 0.4);
+    border-radius: 40px 0px 0px 40px;
+    width: 220px;
+    height: 28px;
+    background-color: rgb(255, 153, 153);
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(61, 0, 0) 0px 0 8px;
+    font-size: 17px;
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.war-mod-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .4);
+    display: grid;
+    place-items: center;
+}
+
+.war-mod-ar {
+   width: 300px;
+   height: 330px;
+   background-color: white;
+   border-radius: 10px;
+   display: grid;
+   place-items: center;
+   box-shadow: 0px 0px 80px rgba(0, 0, 114, 0.3);
+}
+
+.war-mod-1 {
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.war-mod-2 {
+    margin-top: -30px;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.war-mod-3 {
+    margin-top: -30px;
+    font-size: 12px;
+}
+
+.war-mod-4 {
+    margin-top: -55px;
+    padding: 11px 14px 12px 14px;
+    background-color: #063a7e;
+    border-radius: 35px;
+    color: white;
+}
+
+.war-mod-4:hover {
+    background-color: rgb(101, 139, 255);
+    cursor: pointer;
+}

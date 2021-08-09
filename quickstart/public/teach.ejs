@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Twilio Video QuickStart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div id="modals">
+      <img src="/loginlogo.png" alt="" srcset="">
+      <div class="modal fade" id="join-room" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="join-room-label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                       <div class="modal-body">
+                            <div class="form-group">
+                               <label id="room-name-label" for="room-name">Room Name</label>
+                               <input id="room-name" class="form-control" type="text" value="<%= room %>" readonly />
+                            </div>
+                            <div class="form-group">
+                               <label id="screen-name-label" for="screen-name">User Name</label>
+                               <input id="screen-name" class="form-control" type="text" value="<%= user %>" readonly />
+                            </div>
+                            <div id="errormsg" class="alert alert-warning" role="alert"></div>
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" onclick="mainview()" class="btn btn-primary">Join</button>
+                       </div>
+                   </div>
+            </div>
+      </div>
+ </div>
+
+     <div id="main-main-cont">
+<div class="left-side">
+  <div class="nav-bar1">
+    <div class="infoofstud-1">
+      <div class="infoofstud">
+  <% for(let s=0; s < studUInfo.length; s++ ){ %>
+    <div class="ifs-0">
+      <div class="ifs-1"><%= studUInfo[s].RegNo %></div>
+      <div class="ifs-2"><span class="b-b">Name:</span> <%= studUInfo[s].name %></div>
+      <div class="ifs-2"><span class="b-b">Number:</span> <%= studUInfo[s].studNum %></div>
+      <div class="ifs-2"><span class="b-b">ParentName:</span> <%= studUInfo[s].parent %></div>
+      <div class="ifs-2"><span class="b-b">ParentNumbuer:</span> <%= studUInfo[s].parentNum %></div>
+    </div>
+    <% } %>
+      </div>
+    </div>
+    <button onclick="studInfo()" class="nav-btns" id="studinfobtn" >Student Info</button>
+    <button onclick="muteAll()" class="nav-btns" id="mutebtn" >Mute All</button>
+    <img src="/Srmlogo1.jpg" class="logo-teach" alt="" srcset="">
+  </div>
+<div class="container-fluid">
+      <div class="row" id="room">
+         <div id="participants" class="small-videos" style="text-align: center">
+        </div>
+         <div id="active-participant" class="col-xs-12 col-sm-9 col-md-10" style="text-align: center">
+            <div class="participant main">
+              <video autoplay playsinline muted></video>
+            </div>
+         </div>
+      </div>
+</div>
+</div>
+
+
+<div class="right-side">
+  <div class="chat-col" >
+      <div class="chat-head"><div class="chathead-chat">Chat</div></div>
+      <div class="chat-container" id="chatst"></div>
+      <div class="chat-foot">
+          <form id="chat-form">
+            <input 
+            class="chat-input"
+            id="msg"
+            type="text"
+            placeholder="Enter Message"
+            required
+            autocomplete="off">
+            <button class="chat-btn">&#10148;</button>
+          </form>
+      </div>
+  </div>
+</div>
+</div>
+<script>
+        const mainmaincont = document.getElementById('main-main-cont');
+      const modals = document.getElementById('modals');
+        function mainview() {
+          modals.style.display = 'none';
+          mainmaincont.style.display = 'flex';          
+        }
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+    crossorigin="anonymous"></script>
+    <script src="/index.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const room = '<%= room %>';
+        const username = '<%= user %>';
+        console.log('--oio--')
+    </script>
+    <script src="/chat.js"></script>
+    <script>
+      const roomname = document.getElementById('room-name');
+      const screenname = document.getElementById('screen-name');
+
+
+      function joining (){
+        roomname.value = room;
+        screenname.value = username;
+      }
+
+      window.onload = function(){
+               joining();
+        }
+
+    </script>
+    <script>
+           let muteing = 0;
+           let rightside = document.getElementsByClassName('right-side')[0];
+           const chatcol = document.getElementsByClassName('chat-col')[0];
+           const navbar = document.getElementsByClassName('nav-bar1')[0];
+           const infoofstud = document.getElementsByClassName('infoofstud')[0];
+           let participantdiv = document.getElementById('participants'); 
+           let studinfoma = 0;
+
+           function studInfo(){
+               if (studinfoma === 0) {
+                infoofstud.style.display = 'block';
+                studinfoma = 1;
+               } else {
+                infoofstud.style.display = 'none';
+                studinfoma = 0;
+               }
+           }
+
+       function muteAll(){
+        let participants = document.getElementById('participants').children; 
+        let mutebtn = document.getElementById('mutebtn'); 
+       
+          if (muteing === 0) {
+          for(let i = 0; i < participants.length; i++){
+            participants[i].children[0].muted = true;
+            participants[i].children[1].muted = true;
+             participants[i].children[2].style.backgroundColor = 'rgba(255, 0, 0, .14)';
+             muteing = 1;
+             mutebtn.innerText ='Unmute All';
+          }
+          } else {
+            for(let i = 0; i < participants.length; i++){
+            participants[i].children[0].muted = false;
+            participants[i].children[1].muted = false;
+             participants[i].children[2].style.backgroundColor = '';
+             muteing = 0;
+             mutebtn.innerText ='Mute All';
+            }
+          }
+       }
+
+       setInterval(function () {
+         let participants = document.getElementById('participants').children;
+
+         for(let i=0; i < participants.length; i++){
+           if (participants[i].children.length === 2) {
+                 let div = document.createElement('div');
+                 div.className = 'muun';
+                 participants[i].appendChild(div);
+           }
+            participants[i].addEventListener('click',function(e){
+              if (participants[i].children[1].muted === true || participants[i].children[0].muted === true) {
+              participants[i].children[0].muted = false;
+              participants[i].children[1].muted = false;
+              participants[i].children[2].style.backgroundColor = '';
+              } else {
+                participants[i].children[0].muted = true;
+              participants[i].children[1].muted = true;
+              participants[i].children[2].style.backgroundColor = 'rgba(255, 0, 0, .13)';
+              }
+              
+            });
+         }
+     
+       }, 3000);
+
+    </script>
+  </body>
+</html>

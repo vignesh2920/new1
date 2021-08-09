@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/questioncre.css">
+</head>
+<body>
+    <script>
+      
+      const date = '<%= date %>';
+      const time = '<%= time %>';
+      const subname = '<%= subname %>';
+      const subcode = '<%= subcode %>';
+      const set = '<%= sets %>';
+      const duriation = '<%= duriation %>';
+      const partaqu = '<%= partaqu %>';
+      const partamark = '<%= partamark %>';
+      const partbqu = '<%= partbqu %>';
+      const partbmark = '<%= partbmark %>';
+      const staff = '<%= staff %>';
+      const total = '<%= total %>';
+      const partAtime = '<%= partatime %>';
+
+    </script>
+
+ <div class="qc-main-main"> 
+    <div class="qc-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="qc-logo">
+        <div class="qc-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="qc-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="qc-main-cont">
+        <div>
+            
+            <div class="qc-main-row--mess">
+                <b>NOTE :</b> if You can't finish .You can just fill with DUMMY question <b>if you leave empty you can't update later</b>
+            </div>
+
+            <div class="qc-main-row">
+                <div class="qc-m-item">
+                    <div class="qc-it-head">Subject Name</div>
+                    <div class="qc-it-body"></div>
+                </div>
+                <div class="qc-m-item">
+                    <div class="qc-it-head">Subject Code</div>
+                    <div class="qc-it-body"></div>
+                </div>
+                <div class="qc-m-item">
+                    <div class="qc-it-head">Duriation(minutes)</div>
+                    <div class="qc-it-body"></div>
+                </div>
+                <div class="qc-m-item">
+                    <div class="qc-it-head">Number of Sets</div>
+                    <div class="qc-it-body"></div>
+                </div>
+            </div>
+
+        <div class="qc-main-row">
+            <div class="qc-m-item">
+                <div class="qc-it-head">Total Question in Part-A</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Mark for in Part-A(per Q)</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Total Question in Part-B</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Mark for in Part-B(per Q)</div>
+                <div class="qc-it-body"></div>
+            </div>
+        </div>
+
+        <div class="qc-main-row">
+            <div class="qc-m-item">
+                <div class="qc-it-head">Date</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Time</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Total</div>
+                <div class="qc-it-body"></div>
+            </div>
+            <div class="qc-m-item">
+                <div class="qc-it-head">Part-A Time (minutes)</div>
+                <div class="qc-it-body"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="qc-question">
+
+        <form action="/createtest/question" id="myForm" method="post" enctype="multipart/form-data" >
+            <input type="hidden" name="_csrf" id="csrff" value="<%= csrfToken %>">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= date %>" name="date">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= time %>" name="time">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= subname %>" name="subname">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= subcode %>" name="subcode">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= sets %>" name="sets">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= duriation %>" name="duriation">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= partaqu %>" name="partaqu">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= partamark %>" name="partamark">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= partbqu %>" name="partbqu">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= partbmark %>" name="partbmark">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= staff %>" name="staff">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= total %>" name="total">
+            <input class="qc-h-d" type="hidden" readonly required value="<%= partatime %>" name="partAtime">
+
+
+        <% for(let i = 0 ; i < +sets ; i++) { %>
+
+            <% let letter; %>
+            <% if(i === 0) { %>
+            <% letter = 'A'; } %>
+            <% if(i === 1) { %>
+            <% letter = 'B'; } %>
+            <% if(i === 2) { %>
+            <% letter = 'C'; } %>
+            <% if(i === 3) { %>
+            <% letter = 'D'; } %>
+            <% if(i === 4) { %>
+            <% letter = 'E'; } %>
+           
+               <div class="qc-sets">
+
+               <div class="qc-hh">Set-<%= letter %></div> 
+
+               <div class="qc-hpp">Part-A</div>
+              
+              <% for(let j = 1 ; j <= +partaqu ; j++) { %>
+
+               <div class="qc-oneq">Part-A-Set-<%= letter %>-Q<%= j %>)
+    <div>Q<%= j %>)<textarea rows="8" cols="130" required 
+                    type="text" name="<%= subcode %>-<%= letter %>-<%= j %>-Q"  
+                    placeholder="<%= subcode %>-<%= letter %>-<%= j %>-Q"></textarea> </div>
+                     <div><input type="file" name="Qimg-<%= i + 1 %>-<%= j %>-1" class="file-imgg"></div> 
+
+            <div>a)<textarea rows="5" cols="120" required 
+                    type="text" name="<%= subcode %>-<%= letter %>-<%= j %>-a"  
+                    placeholder="<%= subcode %>-<%= letter %>-<%= j %>-a"></textarea> </div>
+                    <div><input type="file" name="Qimg-<%= i + 1 %>-<%= j %>-2" class="file-imgg"></div>
+
+            <div>b)<textarea rows="5" cols="120" required 
+                    type="text" name="<%= subcode %>-<%= letter %>-<%= j %>-b"  
+                    placeholder="<%= subcode %>-<%= letter %>-<%= j %>-b"></textarea> </div>
+                    <div><input type="file" name="Qimg-<%= i + 1 %>-<%= j %>-3" class="file-imgg"></div>
+
+            <div>c)<textarea rows="5" cols="120" required 
+                    type="text" name="<%= subcode %>-<%= letter %>-<%= j %>-c"  
+                    placeholder="<%= subcode %>-<%= letter %>-<%= j %>-c"></textarea> </div>
+                    <div><input type="file" name="Qimg-<%= i + 1 %>-<%= j %>-4" class="file-imgg"></div>
+
+            <div>d)<textarea rows="5" cols="120" required 
+                    type="text" name="<%= subcode %>-<%= letter %>-<%= j %>-d"  
+                    placeholder="<%= subcode %>-<%= letter %>-<%= j %>-d"></textarea> </div>
+                    <div><input type="file" name="Qimg-<%= i + 1 %>-<%= j %>-5" class="file-imgg"></div>
+
+               </div>
+              <% } %>
+
+              <div class="qc-hpp">Part-B</div>
+                <% for(let k = 1 ; k <= +partbqu ; k++) { %>
+                    <div class="qc-oneq">Part-B-Set-<%= letter %>-Q<%= k + +partaqu %>)
+ <div>Q<%= k + +partaqu %>)<textarea rows="8" cols="130" required 
+                            type="text" name="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-Q" 
+                            placeholder="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-Q"></textarea> </div>
+                            <div><input type="file" name="Qimg-<%= i + 1 %>-<%= k + +partaqu %>-1" class="file-imgg"></div>  
+
+                    <div>a)<textarea rows="5" cols="120" required 
+                            type="text" name="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-a" 
+                            placeholder="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-a"></textarea> </div>
+                            <div><input type="file" name="Qimg-<%= i + 1 %>-<%= k + +partaqu %>-2" class="file-imgg"></div>  
+
+                    <div>b)<textarea rows="5" cols="120" required 
+                            type="text" name="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-b" 
+                            placeholder="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-b"></textarea> </div>
+                            <div><input type="file" name="Qimg-<%= i + 1 %>-<%= k + +partaqu %>-3" class="file-imgg"></div>  
+
+                    <div>c)<textarea rows="5" cols="120" required 
+                            type="text" name="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-c" 
+                            placeholder="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-c"></textarea> </div>
+                            <div><input type="file" name="Qimg-<%= i + 1 %>-<%= k + +partaqu %>-4" class="file-imgg"></div> 
+
+                    <div>d)<textarea rows="5" cols="120" required 
+                            type="text" name="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-d" 
+                            placeholder="<%= subcode %>-<%= letter %>-<%= k + +partaqu %>-d"></textarea> </div>
+                            <div><input type="file" name="Qimg-<%= i + 1 %>-<%= k + +partaqu %>-5" class="file-imgg"></div>  
+
+                </div>  
+    
+                  <% } %>
+
+            </div>  
+
+            <% } %>
+
+            <div class="qc-btn-g">
+            <button class="qc-form-btn" type="submit">Submit</button>
+            </div>
+
+        </form>
+        
+    </div>
+
+</div>
+<div class="qc-footer">&#169 Copyright SRM UNIVERSITY</div>
+
+
+
+
+    <script>
+        const qcbody = document.getElementsByClassName('qc-it-body');
+        const qcform = document.getElementsByClassName('qc-h-d');
+
+        qcbody[0].innerText = `${subname}`; 
+        qcbody[1].innerText = `${subcode}`;
+        qcbody[2].innerText = `${duriation}`;
+        qcbody[3].innerText = `${set}`;
+        qcbody[4].innerText = `${partaqu}`;
+        qcbody[5].innerText = `${partamark}`; 
+        qcbody[6].innerText = `${partbqu}`;
+        qcbody[7].innerText = `${partbmark}`;
+        qcbody[8].innerText = `${date}`;
+        qcbody[9].innerText = `${time}`;
+        qcbody[10].innerText = `${total}`;
+        qcbody[11].innerText = `${partAtime}`;
+
+
+        const myForm = document.getElementById('myForm');
+        const csrff = document.getElementById('csrff');
+        const formData = new FormData(myForm);
+
+    //     myForm.addEventListener('submit',function(e){
+    //         e.preventDefault();
+    //         console.log(formData);
+
+    //         fetch('/createtest/question',{
+    //             method: 'post',
+    //              'CSRF-Token': token
+    // },
+    //             body: formData
+    //         }).catch((err)=>{
+    //             console.log(err);
+    //         });
+
+    //     });
+
+
+
+
+
+    </script>
+</body>
+</html>

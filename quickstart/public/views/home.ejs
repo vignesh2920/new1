@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+    <div class="home-nav">
+        <img loading="lazy" src="/Srmlogo1.jpg" alt="" srcset="" class="home-logo">
+        <div class="home-logout-area">
+           <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+             <button class="home-logout-btn" type="submit">Log Out</button>
+           </form>
+        </div>
+    </div>
+    
+    <div class="home-body">
+       <div class="home-1row">
+        <div class="home-body-cont">
+             <a href="/tests">
+          <img loading="lazy" src="/svg/test.svg" alt="" class="home-svg" srcset="">
+          <div class="home-svg-text">Test Room</div>
+             </a>
+        </div>
+       
+        <% if(userIsTeach === 'teacher') { %>
+        <div class="home-body-cont">
+             <a href="/createtest">
+          <img loading="lazy" src="/svg/crequest.svg" alt="" class="home-svg" srcset="">
+          <div class="home-svg-text">Create Test</div>
+             </a>
+        </div>
+        <div class="home-body-cont">
+            <a href="/updatequestion">
+         <img loading="lazy" src="/svg/updatequestion.svg" alt="" class="home-svg" srcset="">
+         <div class="home-svg-text">Update Exam</div>
+            </a>
+        </div>
+        <div class="home-body-cont">
+        <a href="/createAccount">
+         <img loading="lazy" src="/svg/createacc.svg" alt="" class="home-svg" srcset="">
+         <div class="home-svg-text">Create Account</div>
+        </a>
+        </div>
+       <div class="home-body-cont">
+        <a href="/updateAccount">
+          <img loading="lazy" src="/svg/updateacc.svg" alt="" class="home-svg" srcset="">
+          <div class="home-svg-text">Update Account</div>
+        </a>
+        </div>
+      <div class="home-body-cont">
+      <a href="/createroom">
+      <img loading="lazy" src="/svg/createroom.svg" alt="" class="home-svg" srcset="">
+      <div class="home-svg-text">Create Room</div>
+      </a>
+     </div>
+
+     <div class="home-body-cont">
+      <a href="/viewroom">
+   <img  src="/svg/updateroom.svg" alt="" class="home-svg" srcset="">
+   <div class="home-svg-text">Update Room</div>
+      </a>
+     </div>
+   </div>
+
+
+
+
+   <% } %>
+
+    </div>
+    <% if(errorMess) { %>
+      <div class="home-2row">
+         <div class="message"><%= errorMess %></div>
+      </div>
+      <% } %>
+
+
+
+    <div class="home-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/viupquest.css">
+</head>
+<body>
+
+
+<div class="viup-main-main"> 
+    <div class="viup-nav">
+        <img loading="lazy" src="/Srmlogo1.jpg" alt="" srcset="" class="viup-logo">
+        <div class="viup-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="viup-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="viup-main-cont">
+     
+           <div class="viup-const-det">
+            <div class="viup-info-row-mess">
+            <b>NOTE :</b> You can only UPDATE the Question in SET's or DELETE the whole Document
+            </div>
+               <div class="viup-info-row">
+                 <div class="viup-i-r-item">
+                       <div class="v-i-r-r-h">Exam Date</div>
+                       <div class="v-i-r-r-b"><%= thequest.examDate %></div>
+                 </div>
+                 <div class="viup-i-r-item">
+                       <div class="v-i-r-r-h">Exam Time</div>
+                       <div class="v-i-r-r-b"><%= thequest.examTime %></div>
+                 </div>
+                 <div class="viup-i-r-item">
+                       <div class="v-i-r-r-h">Subject Code</div>
+                       <div class="v-i-r-r-b"><%= thequest.subjectCode %></div>
+                 </div>
+                 <div class="viup-i-r-item">
+                       <div class="v-i-r-r-h">Subject Name</div>
+                       <div class="v-i-r-r-b"><%= thequest.subjectName %></div>
+                 </div>
+               </div>
+              <div class="viup-info-row">
+                <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">No. of Part-A Ques..</div>
+                    <div class="v-i-r-r-b"><%= thequest.partAQuestion %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">Mark pre Part-A Ques..</div>
+                    <div class="v-i-r-r-b"><%= thequest.partAMark %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">No. of Part-B Ques..</div>
+                    <div class="v-i-r-r-b"><%= thequest.partBQuestion %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">Mark pre Part-B Ques..</div>
+                    <div class="v-i-r-r-b"><%= thequest.partBMark %></div>
+              </div>
+              </div>
+              <div class="viup-info-row">
+                <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">No. of Sets</div>
+                    <div class="v-i-r-r-b"><%= thequest.numberOfSets %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">Duriation(min)</div>
+                    <div class="v-i-r-r-b"><%= thequest.examDuriation %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">Time for Part-A(min)</div>
+                    <div class="v-i-r-r-b"><%= thequest.partAtime %></div>
+              </div>
+              <div class="viup-i-r-item">
+                    <div class="v-i-r-r-h">Total</div>
+                    <div class="v-i-r-r-b"><%= thequest.total %></div>
+              </div>
+              </div>
+           </div>
+
+    </div>
+     <div class="viup-textarea-form">
+         <form action="/updatequestion/questId" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="Id" value="<%= thequest._id %>">
+             <% if( thequest.setA.length > 0) { %>
+             <div class="v-set">Set-A</div>
+             <% for(let i=0;i < thequest.setA.length; i++) { %>
+             
+                <div class="v-ff-conn"> Set-A Q <%= i+1 %>)
+    <div class="v-f-set-q">
+          <div class="low">Q)</div>
+          <textarea name="<%= thequest.setA[i].Q %>" class="v-ta-q" required cols="130" rows="10"><%= thequest.setA[i].contentQ %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setA[i].imgQ %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setA[i].imgQ %>">
+      </div>
+    
+    <div class="v-f-set-a">
+          <div class="low">a)</div>
+          <textarea name="<%= thequest.setA[i].a %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setA[i].contenta %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setA[i].imga %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setA[i].imga %>">
+      </div>
+    
+    <div class="v-f-set-b">
+          <div class="low">b)</div>
+          <textarea name="<%= thequest.setA[i].b %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setA[i].contentb %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setA[i].imgb %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setA[i].imgb %>">
+      </div>
+      
+    <div class="v-f-set-c">
+          <div class="low">c)</div>
+          <textarea name="<%= thequest.setA[i].c %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setA[i].contentc %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setA[i].imgc %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setA[i].imgc %>">
+      </div>
+    
+    <div class="v-f-set-d">
+          <div class="low">d)</div>
+          <textarea name="<%= thequest.setA[i].d %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setA[i].contentd %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setA[i].imgd %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setA[i].imgd %>">
+      </div>
+    
+                </div>
+             <% } %>
+             <% } %>
+             <% if( thequest.setB.length > 0) { %>
+             <div class="v-set">Set-B</div>
+             <% for(let i=0;i < thequest.setB.length; i++) { %>
+                
+                <div class="v-ff-conn"> Set-B Q <%= i+1 %>)
+    <div class="v-f-set-q">
+          <div class="low">Q)</div>
+          <textarea name="<%= thequest.setB[i].Q %>" class="v-ta-q" required cols="130" rows="10"><%= thequest.setB[i].contentQ %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setB[i].imgQ %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setB[i].imgQ %>">
+      </div>
+    
+    <div class="v-f-set-a">
+          <div class="low">a)</div>
+          <textarea name="<%= thequest.setB[i].a %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setB[i].contenta %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setB[i].imga %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setB[i].imga %>">
+      </div>
+    
+    <div class="v-f-set-b">
+          <div class="low">b)</div>
+          <textarea name="<%= thequest.setB[i].b %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setB[i].contentb %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setB[i].imgb %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setB[i].imgb %>">
+      </div>
+    
+    <div class="v-f-set-c">
+          <div class="low">c)</div>
+          <textarea name="<%= thequest.setB[i].c %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setB[i].contentc %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setB[i].imgc %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setB[i].imgc %>">
+      </div>
+    
+    <div class="v-f-set-d">
+          <div class="low">d)</div>
+          <textarea name="<%= thequest.setB[i].d %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setB[i].contentd %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setB[i].imgd %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setB[i].imgd %>">
+      </div>
+    
+                </div>
+             <% } %>
+             <% } %>
+             <% if( thequest.setC.length > 0) { %>
+             <div class="v-set">Set-C</div>
+             <% for(let i=0;i < thequest.setC.length; i++) { %>
+                
+                <div class="v-ff-conn"> Set-C Q <%= i+1 %>)
+    <div class="v-f-set-q">
+          <div class="low">Q)</div>
+          <textarea name="<%= thequest.setC[i].Q %>" class="v-ta-q" required cols="130" rows="10"><%= thequest.setC[i].contentQ %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setC[i].imgQ %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setC[i].imgQ %>">
+            </div>
+    
+    <div class="v-f-set-a">
+          <div class="low">a)</div>
+          <textarea name="<%= thequest.setC[i].a %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setC[i].contenta %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setC[i].imga %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setC[i].imga %>">
+            </div>
+    
+    <div class="v-f-set-b">
+          <div class="low">b)</div>
+          <textarea name="<%= thequest.setC[i].b %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setC[i].contentb %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setC[i].imgb %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setC[i].imgb %>">
+      </div>
+    
+    <div class="v-f-set-c">
+          <div class="low">c)</div>
+          <textarea name="<%= thequest.setC[i].c %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setC[i].contentc %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setC[i].imgc %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setC[i].imgc %>">
+            </div>
+    
+    <div class="v-f-set-d">
+          <div class="low">d)</div>
+          <textarea name="<%= thequest.setC[i].d %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setC[i].contentd %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setC[i].imgd %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setC[i].imgd %>">
+            </div>
+    
+                </div>
+             <% } %>
+             <% } %>
+             <% if( thequest.setD.length > 0) { %>
+             <div class="v-set">Set-D</div>
+             <% for(let i=0;i < thequest.setD.length; i++) { %>
+             
+                <div class="v-ff-conn"> Set-D Q <%= i+1 %>)
+    <div class="v-f-set-q">
+          <div class="low">Q)</div>
+          <textarea name="<%= thequest.setD[i].Q %>" class="v-ta-q" required cols="130" rows="10"><%= thequest.setD[i].contentQ %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setD[i].imgQ %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setD[i].imgQ %>">
+            </div>
+    
+    <div class="v-f-set-a">
+          <div class="low">a)</div>
+          <textarea name="<%= thequest.setD[i].a %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setD[i].contenta %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setD[i].imga %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setD[i].imga %>">
+            </div>
+    
+    <div class="v-f-set-b">
+          <div class="low">b)</div>
+          <textarea name="<%= thequest.setD[i].b %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setD[i].contentb %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setD[i].imgb %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setD[i].imgb %>">
+            </div>
+    
+    <div class="v-f-set-c">
+          <div class="low">c)</div>
+          <textarea name="<%= thequest.setD[i].c %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setD[i].contentc %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setD[i].imgc %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setD[i].imgc %>">
+            </div>
+    
+    <div class="v-f-set-d">
+          <div class="low">d)</div>
+          <textarea name="<%= thequest.setD[i].d %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setD[i].contentd %></textarea>
+    </div>
+    <div>
+         <img src="/<%= thequest.setD[i].imgd %>" loading="lazy" alt="" srcset="">
+         <input type="hidden" name="<%= thequest.setD[i].imgd %>">
+      </div>
+    
+                </div>
+             <% } %>
+             <% } %>
+             <% if( thequest.setE.length > 0) { %>
+             <div class="v-set">Set-E</div>
+             <% for(let i=0;i < thequest.setE.length; i++) { %>
+               
+                <div class="v-ff-conn"> Set-E Q <%= i+1 %>)
+    <div class="v-f-set-q">
+          <div class="low">Q)</div>
+          <textarea name="<%= thequest.setE[i].Q %>" class="v-ta-q" required cols="130" rows="10"><%= thequest.setE[i].contentQ %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setE[i].imgQ %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setE[i].imgQ %>">
+            </div>
+    
+    <div class="v-f-set-a">
+          <div class="low">a)</div>
+          <textarea name="<%= thequest.setE[i].a %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setE[i].contenta %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setE[i].imga %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setE[i].imga %>">
+            </div>
+    
+    <div class="v-f-set-b">
+          <div class="low">b)</div>
+          <textarea name="<%= thequest.setE[i].b %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setE[i].contentb %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setE[i].imgb %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setE[i].imgb %>">
+            </div>
+    
+    <div class="v-f-set-c">
+          <div class="low">c)</div>
+          <textarea name="<%= thequest.setE[i].c %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setE[i].contentc %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setE[i].imgc %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setE[i].imgc %>">
+            </div>
+    
+    <div class="v-f-set-d">
+          <div class="low">d)</div>
+          <textarea name="<%= thequest.setE[i].d %>" class="v-ta-o" required cols="100" rows="10"><%= thequest.setE[i].contentd %></textarea>
+          </div>
+          <div>
+               <img src="/<%= thequest.setE[i].imgd %>" loading="lazy" alt="" srcset="">
+               <input type="hidden" name="<%= thequest.setE[i].imgd %>">
+            </div>
+    
+                 </div>
+             <% } %>
+             <% } %>
+             <div>
+            <div class="chan">
+        <input type="radio" required name="saveOrdelete" value="save" id="savve">  <label for="savve">SAVE</label>
+           </div>
+           <div class="chan1">
+        <input type="radio" required name="saveOrdelete" value="delete" id="delle"><label for="delle">DELETE</label>
+           </div>
+      </div>
+
+             <div class="cen-viup">
+                   <div><button class="vf-btn" type="submit">Action</button></div>
+             </div>
+ <input type="hidden" name="subcode" value="<%= thequest.subjectCode %>">
+
+         </form>
+     </div>
+
+</div>
+<div class="viup-footer">&#169 Copyright SRM UNIVERSITY</div>
+
+</body>
+</html>

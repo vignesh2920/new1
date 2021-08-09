@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/createtest.css">
+</head>
+<body>
+
+    <div class="ct-main-contt">
+    <div class="ct-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="ct-logo">
+        <div class="ct-logout-area">
+           <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="ct-logout-btn" type="submit">Log Out</button>
+         </form>
+      </div>
+    </div>
+    <% if(errMess) { %>
+      <div class="message red">
+         <b>NOTE :</b> <%= errMess %>
+      </div>
+   <% } else { %>
+      <div class="message"><b>NOTE :</b> You can't update Reg.no / ID and Teacher / Student But you can Delete the Account</div>
+      <% } %>
+    <div class="ct-req-cont">
+        <form action="/updateAccount/updating" method="post" >
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+         <input type="hidden" name="id" value="<%= user._id %>">
+            <div class="ct-form">
+               <div class="form-div">
+                   <div>
+                       <label for="Enter Reg. No.">Enter Reg. No. / ID</label>
+                       <input type="text" id="Enter Reg. No." placeholder="Reg. No." name="regNo" value="<%= user.regNo %>" readonly>
+                    </div>
+                    <div>
+                       <label for="time">Enter Name</label>
+                       <input type="text" name="name" id="time" placeholder="Name" value="<%= user.name %>" required>
+                    </div>
+               </div>
+
+               <div class="form-div">
+                   <div>
+                       <label for="Enter Emai">Enter Email</label>
+                        <input type="email" name="email" id="Enter Emai" placeholder="Email" value="<%= user.email %>"  required>
+                     
+                    </div>
+                    <div>
+                      <label for="Enter ">is Teach. or Stud.</label>
+                      
+                      <input type="text" name="teachOrstud"  value="<%= user.teachOrstud %>" id="Enter teachOrstud" placeholder="*" required readonly>
+                 
+                    </div>
+                </div>
+                <div class="form-div">
+                  <div>
+                   <label for="Enter Campus">Enter Campus</label>
+                   <input type="text" name="campus" id="Enter Campus" placeholder="Campus" value="<%= user.campus %>" required>
+                 </div>
+                 <div>
+                    <label for="Enter Department">Enter Department</label>
+                    <input type="text" name="department" id="Enter Department" placeholder="Department" value="<%= user.department %>" required>
+                 </div>
+                </div>
+        
+             <div class="form-div">
+                <div>
+                  <label for="Enter Year">Enter Year (Number)</label>
+                  <input type="number" name="year" id="Enter Year" placeholder="Year in Number" value="<%= user.year %>" required>
+                </div>
+                <div>
+                   <label for="Enter Section">Enter Section</label>
+                     <input type="text" name="section" id="Enter Section" maxlength="2" placeholder="Section"  value="<%= user.section %>" required>
+               </div>
+             </div>
+              <div class="form-div">
+                 <div>
+                    <label for="Number of Studend / Teacher">Number of Student / Teacher</label>
+                    <input type="number" name="number" id="Number of Studend / Teacher" placeholder="Number"  value="<%= user.number %>" required>
+                 </div>   
+           
+              </div>
+              <div class="form-div">
+                <div>
+                   <label for="Name of Parent">Name of Parent</label>
+                   <input type="text" name="parentName" id="Name of Parent" placeholder="Name of Parent" value="<%= user.parentName %>" required>
+                </div>
+                <div>
+                   <label for="parentNumber">Number of Prarent</label>
+                  <input type="number" name="parentNumber" id="parentNumber" placeholder="Number of Prarent" value="<%= user.parentNumber %>" required>
+                </div>        
+             </div>
+          
+             <div class="gap-acc"></div>
+                    <% for(let i =0; i < 15;i++) { %>
+             <div class="form-div">
+                <div>
+                   <label for="<%= i+1 %>) Subject code"><%= i+1 %>) Subject code</label>
+                   <% if(user.tests[i]) { %>
+                   <input 
+                   type="text" 
+                   name="sub-<%= i+1 %>-code" 
+                   id="<%= i+1 %>) Subject code" 
+                   value="<%= user.tests[i].subjectCode %>">
+                   <% } else { %>
+                   <input 
+                   type="text" 
+                   name="sub-<%= i+1 %>-code" 
+                   id="<%= i+1 %>) Subject code">
+                   <% } %>
+                  
+                </div>
+                <div>
+                   <label for="<%= i+1 %>) Subject Room"><%= i+1 %>) Subject Room</label>
+                   <% if(user.tests[i]) { %>
+                     <input 
+                     type="text" 
+                     name="sub-<%= i+1 %>-room" 
+                     id="<%= i+1 %>) Subject Room" 
+                     value="<%= user.tests[i].examRoom %>">
+                     <% } else { %>
+                     <input 
+                     type="text" 
+                     name="sub-<%= i+1 %>-room" 
+                     id="<%= i+1 %>) Subject Room">
+                     <% } %>
+                </div>        
+             </div>
+             <% } %>
+           
+             <div class="form-div">
+               <div>
+                <input class="radio-btn" type="radio" required name="saveOrdele" value="save" id="save"><label for="save">SAVE</label>
+               </div>
+               <div>
+                <input class="radio-btn" type="radio" required name="saveOrdele" value="delete" id="dele"><label for="dele">DELETE</label>
+               </div>        
+            </div>
+         
+              <div class="form-div">
+
+                 <div>
+                    <input type="hidden" name="staff"  id="staff" value="Sanajy" required readonly>
+                 </div>
+            </div>
+
+              <div class="ct-f-btn"><button type="submit">Start</button></div>
+          </div>
+         
+        </form>
+    </div>
+</div>
+<div class="ctt-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

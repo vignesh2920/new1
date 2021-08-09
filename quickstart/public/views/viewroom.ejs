@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tests.css">
+</head>
+<body>
+    <div class="tests-main">
+    <div class="tests-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="tests-logo">
+        <div class="tests-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="tests-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="tests-body">
+        <% if(errMess) { %>
+        <div class="test-message">
+           <b>NOTE :</b><%= errMess %>
+        </div>
+        <% } %>
+        <div class="tests-table">&ensp; Tests
+            <div id="t-table-cont">
+                <div class="t-t-c-table">
+                    <div class="t-tab-head">
+                      <div class="t-t-he-sno">   <div>S.No</div> </div>
+                      <div class="t-t-he-test">  <div>RoomID</div> </div>
+                      <div class="t-t-he-start"> <div>Teacher incharge</div></div>
+                      <div class="t-t-he-status"><div>No. of students</div> </div>
+                      <div class="t-t-he-status"><div>Update or View</div> </div>
+                    </div>
+                       
+                    <% for(let i = 0; i < roomlist.length; i++ ) { %>
+                        <% const totarr = Object.values(roomlist[i].students) %>
+                        <% const totlen = totarr.filter(word => word.RegNo !== 'non'); %>
+                    <div class="t-tab-data">
+                        <div class="t-t-bod-sno"><%= i %></div>
+                        <div class="t-t-bod-thr"><%= roomlist[i].roomId %></div>
+                        <div class="t-t-bod-thr"><%= roomlist[i].teacher %></div>
+                        <div class="t-t-bod-thr"><%= totlen.length %></div>
+                        <div class="t-t-bod-thr"><a href="/rooms/<%= roomlist[i]._id %>/<%= roomlist[i].roomId %>">Start</a> </div>
+                    </div>
+                        <% } %>         
+                     <div class="t-tab-bbss"></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="tests-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

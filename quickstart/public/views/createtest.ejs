@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/createtest.css">
+</head>
+<body>
+    <div class="ct-main-contt">
+    <div class="ct-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="ct-logo">
+        <div class="ct-logout-area">
+           <form action="/logout" method="post">
+
+            <button class="ct-logout-btn" type="submit">Log Out</button>
+         </form>
+      </div>
+    </div>
+
+
+
+    <div class="ct-req-cont">
+
+      <% if(errMess) { %>
+         <div class="message-ct red">  
+            <b>NOTE :</b> <%= errMess %>
+         </div>
+         <% } else { %>
+      <div class="message-ct">  
+         <b>NOTE :</b> Please Be Carefull while filling the form You can UPDATE only the Question or DELETE the full Document
+      </div>
+      <% } %>
+        <form action="/createtest" method="post" >
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="ct-form">
+               <div class="form-div">
+                   <div>
+                       <label for="data">Enter Exam Date</label>
+                       <input type="date" name="date" id="data" required>
+                    </div>
+                    <div>
+                       <label for="time">Enter Exam Time(1-24)</label>
+                       <input type="time" name="time" id="time" required>
+                    </div>
+               </div>
+
+               <div class="form-div">
+                   <div>
+                       <label for="subname">Enter Subject Name</label>
+                       <input type="text" name="subname" id="subname" placeholder="Enter Subject Name" required>
+                    </div>
+                    <div>
+                      <label for="subcode">Enter Subject Code</label>
+                      <input type="text" name="subcode" id="subcode" placeholder="Enter Subject Code" required>
+                    </div>
+                </div>
+                <div class="form-div">
+                  <div>
+                   <label for="duriation">Enter Exam Duriation in Minutes</label>
+                   <input type="number" name="duriation" id="duriation" placeholder="Enter number Minutes" required>
+                 </div>
+                </div>
+                <div class="form-div">
+                 <div>
+                   <label for="sets">Enter Number of Set</label>
+                   <input type="number" name="sets" id="sets" placeholder="Enter number of Sets" required>
+                </div>
+
+             </div>
+             <div class="f-part">Enter <b>PART-A</b></div>
+             <div class="form-div">
+                <div>
+                  <label for="parta">Number of Question</label>
+                  <input type="number" name="partaqu" id="parta" placeholder="Enter number of Question" required>
+                </div>
+                <div>
+                   <label for="partamark">mark for a Question</label>
+                     <input type="number" name="partamark" id="partamark" placeholder="Enter mark" required>
+               </div>
+             </div>
+             <div class="form-div">
+               <div>
+                  <label for="partAtime">Part-A Time (Minutes)</label>
+                  <input type="number" name="partAtime" id="partAtime" placeholder="Enter Part-A Time" required>
+                </div>
+            </div>
+             <div class="f-part">Enter <b>PART-B</b></div>
+              <div class="form-div">
+                 <div>
+                    <label for="partb">Number of Question</label>
+                    <input type="number" name="partbqu" id="partb" placeholder="Enter number of Question" required>
+                 </div>
+                 <div>
+                    <label for="partbmark">mark for a Question</label>
+                   <input type="number" name="partbmark" id="partbmark" placeholder="Enter mark" required>
+                 </div>
+                 
+              </div>
+              <div class="gapp"></div>
+              <div class="form-div">
+                <div>
+                    <label for="total">Enter Total Mark</label>
+                    <input type="number" name="total" id="total" placeholder="Total Mark" required>
+                 </div>
+
+
+            </div>
+
+              <div class="ct-f-btn"><button type="submit">Start</button></div>
+          </div>
+         
+        </form>
+    </div>
+</div>
+<div class="ctt-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

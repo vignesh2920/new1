@@ -1,0 +1,125 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.login-container{
+    height: 90vh;
+}
+
+.login-header { 
+   margin-left: 35px;
+   margin-bottom: 50px;
+    width: 250px;
+    height: 100px;
+}
+
+.login-form{
+    width: 320px;
+    height: 380px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.log-form-text{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+label {
+    margin-top: 80px;
+    padding-top: 20px ;
+    margin-left: 30px;
+    font-weight: 400;
+}
+
+.login-input{
+    margin-top: 3px;
+    margin-left: 26px;
+    width: 250px;
+    height: 15px;
+    padding: 10px;
+    border: 1px solid #063a7e;
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(6, 58, 126, 0.5);
+}
+
+.login-btn{
+    margin-left: 130px;
+    margin-top: 60px;
+    color: white;
+    width: 70px;
+    height: 35px;
+    background-color: #063a7e;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.login-reg-for{
+    margin-top: 10px;
+}
+
+a {
+    margin-left: 90px;
+    color: #063a7e;
+    text-decoration: none;
+    padding: 10px;
+}
+
+
+.login-footer{
+    padding-top: 10px;
+    text-align: center;
+    position: fixed;
+    color: white;
+    bottom: 0;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+
+.log-err {
+    margin-top: 20px;
+    text-align: center;
+    width: 320px;
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 195, 195);
+    box-shadow: 0px 0px 4px rgba(70, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.loerr {
+    margin-top: 4px;
+    color: #063a7e;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.err--div {
+    margin-top: -300px;
+    text-align: center;
+}
+
+.erraa {
+    margin: 0px;
+}

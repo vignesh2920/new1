@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | SRM UNIVERSITY</title>
+    <link rel="stylesheet" href="./css/upseachacc.css">
+</head>
+<body>
+    <div class="upseacc-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="upseacc-logo">
+        <div class="upseacc-logout-area">
+           <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+             <button class="upseacc-logout-btn" type="submit">Log Out</button>
+           </form>
+        </div>
+    </div>
+     <div class="upseacc-body">
+         <div class="upseacc-container">
+             <% if(errMess) { %>
+                <div class="mess-ups"><b>NOTE :</b> <%= errMess %> </div>
+                <% } %>
+            <div class="upseacc-form">
+                <div class="upseacc-form-text">Find Account</div>
+                <form action="/updateAccount" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div><label for="upseacc-regno">Reg. No.</label></div>
+                    <div><input type="text" name="regno" class="upseacc-input" id="upseacc-regno" placeholder="Reg.no."></div>
+                    <div><label for="upseacc-campus">Campus</label></div>
+                    <div><input type="text" name="campus" class="upseacc-input" id="upseacc-campus"  placeholder="campus"></div>
+                    <div><label for="upseacc-department">Department</label></div>
+                    <div><input type="text" name="department" class="upseacc-input" id="upseacc-department"  placeholder="department"></div>
+                    <div><label for="upseacc-year">Year</label></div>
+                    <div><input type="number" name="year" min="1" max="9" class="upseacc-input" id="upseacc-year"  placeholder="year"></div>
+                    <div><label for="upseacc-section">Section</label></div>
+                    <div><input type="text" maxlength="2" name="section" class="upseacc-input" id="upseacc-section"  placeholder="section"></div>
+                   
+                    <div><button type="submit" class="upseacc-btn">Search</button></div>
+                </form>
+            </div>
+
+           
+         </div>
+         <div class="upseacc-footer">&#169 Copyright SRM UNIVERSITY</div>
+     </div>
+    
+</body>
+</html>

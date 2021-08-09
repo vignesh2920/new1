@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Twilio Video QuickStart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="/css/exam.css" />
+    <link rel="stylesheet" href="/css/testdetails.css">
+    <link rel="stylesheet" href="/stud.css" />
+  </head>
+  <body>
+
+<div id="main-main-cont">
+         <div class="left-side">
+           <div id="regnoname"><%= studdet.regNo %>(<%= studdet.name %>)</div>
+         <div class="container-fluid">
+               <div class="row" id="room">
+                 <div id="participants" class="small-videos" style="text-align: center">
+                 </div>
+                  <div id="active-participant" class="col-xs-12 col-sm-9 col-md-10" style="text-align: center">
+                      <div class="participant main">
+                       <video autoplay playsinline muted></video>
+                      </div> 
+                  </div>
+               </div>
+         </div>
+     
+         <div class="message-ui-ui"></div>
+         </div>
+         <div class="right-side">
+             <div class="roww-s-r">
+                 <div>
+                 <div class="row-info-d"> <div class="row-info-p-t-h">Name:</div> <div class="row-info-p-t-c"><%= studdet.name %></div> </div>
+                 <div class="row-info-d"> <div class="row-info-p-t-h">Register Number</div> <div class="row-info-p-t-c"><%= studdet.regNo %></div> </div>
+                 <div class="row-info-d"> <div class="row-info-p-t-h">Number</div> <div class="row-info-p-t-c"><%= studdet.num %></div> </div>
+                </div>
+             </div>
+             <div class="roww-s-r">
+                <div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Exam Code</div> <div class="row-info-p-t-c"><%= questions.subjectCode %></div> </div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Exam Duritaion</div> <div class="row-info-p-t-c"><%= questions.examDuriation %> minute</div> </div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Exam Starts</div> <div class="row-info-p-t-c"><%= questions.examTime %></div> </div>
+                   </div>
+             </div>
+             <div class="roww-s-r">
+                <div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Staff Name</div> <div class="row-info-p-t-c"><%= room.name %></div> </div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Staff Number</div> <div class="row-info-p-t-c"><%= room.num %></div> </div>
+                    <div class="row-info-d"> <div class="row-info-p-t-h">Staff Email</div> <div class="row-info-p-t-c"><%= room.email %></div> </div>
+                   </div>
+             </div>
+        <div class="roww-s-r">
+        <div id="modals">
+            <div class="modal fade" id="join-room" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="join-room-label" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-body">
+                                  <div class="form-group">
+                                     <label id="room-name-label" for="room-name">Room Name</label>
+                                     <input id="room-name" class="form-control" type="text" value="<%= room %>" readonly />
+                                  </div>
+                                  <div class="form-group">
+                                     <label id="screen-name-label" for="screen-name">User Name</label>
+                                     <input id="screen-name" class="form-control" type="text" readonly />
+                                  </div>
+                                  <div id="errormsg" class="alert alert-warning" role="alert"></div>
+                             </div>
+                             <div class="modal-footer">
+                               <button type="button" id="btncha" onclick="mainview()" class="btn btn-primary">Enter</button>
+                             </div>
+                         </div>
+                  </div>
+            </div>
+        </div>
+        <div class="vieww-mge">*Wait Till Staff allow You</div>
+        </div>
+
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="one-mega-div">
+
+  <div class="exam-body-testdet">
+    <div class="testdet-nav">
+      <img src="/Srmlogo1.jpg" alt="" srcset="" class="testdet-logo">
+      <div class="testdet-logout-area">
+        <form action="/logout" method="post">
+         
+          <button class="testdet-logout-btn" type="submit">Log Out</button>
+        </form>
+      </div>
+    </div>
+    <div class="testdet-body">
+        <div class="td-body-cont">
+            <div class="td-cont-head">Test Details</div>
+            <div class="td-cont-body-exam">
+                <div class="td-c-b-exam-info">
+              
+                        <div class="td-c-b-e-i-nadu-namecode"> 
+                            <div class="td-c-b-e-i-he td-top-left">Exam Name / Code : </div> 
+                            <div class="td-c-b-e-i-he-cont"><%= questions.subjectName %> / <%= questions.subjectCode %></div>
+                        </div>
+                        <div class="td-c-b-e-i-nadu-duration"> 
+                            <div class="td-c-b-e-i-he">Duriation : </div> 
+                            <div class="td-c-b-e-i-he-cont"><%= questions.examDuriation %> minute</div> 
+                        </div>
+                        <div class="td-c-b-e-i-mast-mark">     
+                            <div class="td-c-b-e-i-he">Marks : </div> 
+                            <div class="td-c-b-e-i-he-cont"><%= questions.total %></div> 
+                        </div>
+                        <div class="td-c-b-e-i-mast-starttime">
+                            <div class="td-c-b-e-i-he td-bottom-right">Starting Time : </div> 
+                            <div class="td-c-b-e-i-he-cont"><%= questions.examDate %> <%= questions.examTime %> (Indian Standed Time)</div> 
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="td-cont-body-gend">
+                <div class="td-c-b-gend-info">&emsp; General Instruction :
+                    <div class="td-d-b-g-i-gend">
+                     <span>Part-A</span> contains <span><%= questions.partAQuestion %></span> Multiple Choice  Question .Each question carry <span><%= questions.partAMark %> mark</span>  <br>
+                     <span>Part-B</span> contains <span><%= questions.partBQuestion %></span> Multiple Choice  Question .Each question carry <span><%= questions.partBMark %> mark</span>  <br>
+                      The maximum time for <span>Part-A</span> is <span>30 minute</span> <br>
+                      Once you go to <span>Part-B</span> you cannot come back to <span>Part-A</span>
+                    </div>
+                </div>
+            </div>
+            <div class="td-cont-body-staff">
+                <div class="td-c-b-staff-info">
+                    <div class="td-c-b-s-i-h1"><div>Staff Details</div> </div>
+                    <div class="td-c-b-s-i-h2"><div>Name :</div> <div class="td--ib">Email :</div> <div>Call No. : </div>  </div>
+                    <div class="td-c-b-s-i-h3"><div><%= room.name %></div> <div class="td--ib"><%= room.email %></div> <div><%= room.num %></div></div>
+                </div>
+            </div>
+            <div class="td-cont-btn-time">
+                <div class="td-c-btn-time-count">
+                  <div class="td-c-b-t-togg">
+                  *Your text start in <span class="td-min-mm">0</span>m <span class="td-min-mm">0</span>s
+                  </div>
+                  <div class="td-c-b-t-togg">
+                    <button onclick="toExammode()">Start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testdet-footer">&#169 Copyright SRM UNIVERSITY</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="exam-body-chat">
+  <div class="msg-info-of-ans">
+  </div>
+<div class="online-info">
+  <div class="onl-off">
+    <div class="on-off-sta">Online</div>
+   <div class="on-off-cir"></div> 
+  </div>
+  <div class="staff-info">
+    <div class="staff-name"><%= room.name %></div>
+    <div class="staff-no"> <span>Call :</span><%= room.num %></div>
+  </div>
+</div>
+
+<div class="div">
+  <div class="main-cont">
+    <div class="container">
+      <div class="head">
+        <div class="img-area">
+          <img src="/Srmlogo1.jpg" alt="LOGO" class="logo-img" />
+        </div>
+        <div class="time">
+          <div class="qty-info">
+            <span class="qtyinfo-no">QUESTION NO. : 1 [<%= questions.partBQuestion + questions.partAQuestion %>]</span>
+            <span class="qtyinfo-mark">MARKS - 1</span>
+            <span class="qtyinfo-part">PART - A[<%= questions.partAQuestion %>]</span> 
+          </div>
+          <div class="time-count">
+            TIME :
+            <span class="timecount">0</span> :
+            <span class="timecount">0</span> :
+            <span class="timecount">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-qty">
+
+       <% for(let i = 0 ; i < questions.setA.length ; i++) { %>
+        <% if( answed[i] && questions.setA[i].Q === answed[i].Q) { %>
+          <div class="qty-opts-save">
+            <form class="qtyForm">    
+              <div class="question-area">
+                <div class="question"><%= questions.setA[i].contentQ %>
+                  <% if(typeof questions.setA[i].imgQ === "undefined") { %>
+                  <% } else { %>
+                    <img src="/<%= questions.setA[i].imgQ %>" loading="lazy" alt="" srcset="">
+                  <% } %>
+                </div>
+              </div>
+              <div class="opt-1">
+                <% if( questions.setA[i].a === answed[i].ans) { %>
+                  <input
+                  type="radio"
+                  name="<%= questions.setA[i].Q %>"
+                  id="<%= questions.setA[i].a %>"
+                  value="<%= questions.setA[i].contenta %>"
+                  checked
+                />
+                <% } else { %>
+                  <input
+                  type="radio"
+                  name="<%= questions.setA[i].Q %>"
+                  id="<%= questions.setA[i].a %>"
+                  value="<%= questions.setA[i].contenta %>"
+                />
+                <% } %>
+                <label for="<%= questions.setA[i].a %>"><div><%= questions.setA[i].contenta %></div>
+                  <% if(typeof questions.setA[i].imga === "undefined") { %>
+                    <% } else { %>
+                  <img src="/<%= questions.setA[i].imga %>" loading="lazy" alt="" srcset="">
+                  <% } %>
+                </label>
+              </div>
+              <div class="opt-2">
+                <% if( questions.setA[i].b === answed[i].ans) { %>
+                    <input
+                    type="radio"
+                    name="<%= questions.setA[i].Q %>"
+                    id="<%= questions.setA[i].b %>"
+                    value="<%= questions.setA[i].contentb %>"
+                    checked
+                  />
+                <% } else { %>
+                   <input
+                   type="radio"
+                   name="<%= questions.setA[i].Q %>"
+                   id="<%= questions.setA[i].b %>"
+                   value="<%= questions.setA[i].contentb %>"
+                    />
+                <% } %>
+               
+                <label for="<%= questions.setA[i].b %>"><div><%= questions.setA[i].contentb %></div>
+                  <% if(typeof questions.setA[i].imgb === "undefined") { %>
+                    <% } else { %>
+                  <img src="/<%= questions.setA[i].imgb %>" loading="lazy" alt="" srcset="">
+                  <% } %>
+                </label>
+              </div>
+              <div class="opt-3">
+                <% if( questions.setA[i].c === answed[i].ans) { %>
+                    <input
+                    type="radio"
+                    name="<%= questions.setA[i].Q %>"
+                    id="<%= questions.setA[i].c %>"
+                    value="<%= questions.setA[i].contentc %>"
+                    checked
+                  />
+                  <% } else { %>
+                    <input
+                    type="radio"
+                    name="<%= questions.setA[i].Q %>"
+                    id="<%= questions.setA[i].c %>"
+                    value="<%= questions.setA[i].contentc %>"
+                  />
+                  <% } %>
+                <label for="<%= questions.setA[i].c %>"><div><%= questions.setA[i].contentc %></div>
+                  <% if(typeof questions.setA[i].imgc === "undefined") { %>
+                    <% } else { %>
+                  <img src="/<%= questions.setA[i].imgc %>" loading="lazy" alt="" srcset="">
+                  <% } %>
+                </label>
+              </div>
+              <div class="opt-4">
+                <% if( questions.setA[i].d === answed[i].ans) { %>
+                  <input
+                  type="radio"
+                  name="<%= questions.setA[i].Q %>"
+                  id="<%= questions.setA[i].d %>"
+                  value="<%= questions.setA[i].contentd %>"
+                  checked
+                />              
+                <% } else { %>
+                  <input
+                  type="radio"
+                  name="<%= questions.setA[i].Q %>"
+                  id="<%= questions.setA[i].d %>"
+                  value="<%= questions.setA[i].contentd %>"
+                  >
+                  <% } %>
+                <label for="<%= questions.setA[i].d %>"><div><%= questions.setA[i].contentd %></div>
+                  <% if(typeof questions.setA[i].imgd === "undefined") { %>
+                    <% } else { %>
+                  <img src="/<%= questions.setA[i].imgd %>" loading="lazy" alt="" srcset="">
+                  <% } %>
+                </label>
+              </div>
+              <div class="question-btn">
+                <button type="submit" class="save-btn">Save</button>
+              </div>
+              <input class="csrff" type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form> 
+          </div>
+          <% } else { %>
+
+
+            <div class="qty-opts-save">
+              <form class="qtyForm">    
+                <div class="question-area">
+                  <div class="question"><div><%= questions.setA[i].contentQ %></div>
+                    <% if(typeof questions.setA[i].imgQ === "undefined") { %>
+                      <% } else { %>
+                        <img src="/<%= questions.setA[i].imgQ %>" loading="lazy" alt="" srcset="">
+                      <% } %></div>
+                </div>
+                <div class="opt-1">
+                    <input
+                    type="radio"
+                    name="<%= questions.setA[i].Q %>"
+                    id="<%= questions.setA[i].a %>"
+                    value="<%= questions.setA[i].contenta %>"
+                  />
+                  <label for="<%= questions.setA[i].a %>"><div><%= questions.setA[i].contenta %></div>
+                    <% if(typeof questions.setA[i].imga === "undefined") { %>
+                      <% } else { %>
+                    <img src="/<%= questions.setA[i].imga %>" loading="lazy" alt="" srcset="">
+                    <% } %>
+                  </label>
+                </div>
+                <div class="opt-2">
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].b %>"
+                      value="<%= questions.setA[i].contentb %>"
+                    />
+                  <label for="<%= questions.setA[i].b %>"><div><%= questions.setA[i].contentb %></div>
+                    <% if(typeof questions.setA[i].imgb === "undefined") { %>
+                      <% } else { %>
+                    <img src="/<%= questions.setA[i].imgb %>" loading="lazy" alt="" srcset="">
+                    <% } %>
+                  </label>
+                </div>
+                <div class="opt-3">
+
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].c %>"
+                      value="<%= questions.setA[i].contentc %>"
+                    />
+                  <label for="<%= questions.setA[i].c %>"><div><%= questions.setA[i].contentc %></div>
+                    <% if(typeof questions.setA[i].imgc === "undefined") { %>
+                      <% } else { %>
+                    <img src="/<%= questions.setA[i].imgc %>" loading="lazy" alt="" srcset="">
+                    <% } %>
+                  </label>
+                </div>
+                <div class="opt-4">
+
+                    <input
+                    type="radio"
+                    name="<%= questions.setA[i].Q %>"
+                    id="<%= questions.setA[i].d %>"
+                    value="<%= questions.setA[i].contentd %>"
+                  />              
+                  
+                  <label for="<%= questions.setA[i].d %>"><div><%= questions.setA[i].contentd %></div>
+                    <% if(typeof questions.setA[i].imgd === "undefined") { %>
+                      <% } else { %>
+                    <img src="/<%= questions.setA[i].imgd %>" loading="lazy" alt="" srcset="">
+                    <% } %>
+                  </label>
+                </div>
+                <div class="question-btn">
+                  <button type="submit" class="save-btn">Save</button>
+                </div>
+                <input class="csrff" type="hidden" name="_csrf" value="<%= csrfToken %>">
+              </form> 
+            </div>
+
+
+            <% } %>
+        <% } %>       
+       
+      </div>
+
+      <div class="foot">
+        
+<div class="war-mod-bg">
+  <div class="war-mod-ar">
+     <div class="war-mod-1">**WARNING**</div>
+     <div class="war-mod-2">0</div>
+     <div class="war-mod-3">Pleace move to test mode</div>
+     <div class="war-mod-4" onclick="fullsc()">Test Mode</div>
+     
+  </div>
+</div>
+
+        <div class="foot-btn">
+          <div class="foot-free"></div>
+          <div class="prevbtn" onclick="prevbtn()">&#8249;&#8249;</div>
+          <div class="nextbtn" onclick="nextbtn()">&#8250;&#8250;</div>
+        </div>
+        <div class="foot-copy">
+          <span class="copy-sym">&#169;</span> COPYRIGHT VIGNESH
+        </div>
+      </div>
+      <div class="spaceing"></div>
+    </div>
+
+    <div class="chat">
+      <div class="chat-col" >
+        <div class="chat-head"><div class="chathead-chat">Chat</div></div>
+        <div class="chat-container" id="chatst"></div>
+        <div class="chat-foot">
+            <form id="chat-form">
+              <input 
+              class="chat-input"
+              id="msg"
+              type="text"
+              placeholder="Enter Message"
+              required
+              autocomplete="off">
+              <button class="chat-btn">&#10148;</button>
+            </form>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+  
+ </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+    crossorigin="anonymous"></script>
+    <script src="/index.js"></script>
+
+    <script>
+
+let hiddddd = document.getElementsByClassName('one-mega-div')[0];
+     hiddddd.style.display = 'none';
+
+
+
+const room = '<%= room.roomID %>';
+const username = '<%= studdet.regNo %>';
+      const roomname = document.getElementById('room-name');
+      const screenname = document.getElementById('screen-name');
+      const mainmaincont = document.getElementById('main-main-cont');
+      const modals = document.getElementById('modals');
+      const btncha = document.getElementById('btncha');
+
+      function joining (){
+        roomname.value = room;
+        screenname.value = username;
+      }
+
+      window.onload = function(){
+               joining();
+        }
+
+
+
+    </script>
+    <script>
+        const viewwmge = document.getElementsByClassName('vieww-mge')[0];
+
+        viewwmge.style.display ='none';
+    
+
+
+        function mainview() {
+          modals.style.display = 'none';
+          viewwmge.style.display = 'block';
+          // mainmaincont.style.display = 'none';
+            //  hiddddd.style.display = 'block';
+        }
+        // containerfluid.style.display = 'none';
+        // formgroup[0].style.display = 'none';
+        // formgroup[1].style.display = 'none';
+
+        setInterval( function () {
+          const participants = document.getElementById('participants').children;
+          for (let i = 0; i < participants.length; i++) {
+            if (participants[i].dataset.identity === username) {
+              
+            } else {
+              if (participants[i].dataset.identity.substring(0,4) === 'teac' ) {
+                participants[i].style.display = 'none';
+              } else {
+                participants[i].style.display = 'none';
+              participants[i].children[0].muted = true; 
+              participants[i].children[1].muted = true;
+              }
+             
+            }
+          console.log(participants[i].dataset.identity);
+            
+            
+          }
+        }, 1000);
+    </script>
+     <script>
+       
+      const stopandstart = document.getElementsByClassName('td-c-b-t-togg');
+      const maincont = document.getElementsByClassName('one-mega-div')[0].children;
+     const timecount = document.getElementsByClassName('timecount');
+     const timetostart = document.getElementsByClassName('td-min-mm');
+
+     stopandstart[1].style.display = 'none';
+     maincont[1].style.display = 'none';
+     console.log(timecount);
+     const severtime = '<%= time %>';
+     let clientcount = +severtime;
+     let gap = +severtime;
+     let starttime;
+     const partA = '<%= questions.partAQuestion %>';
+      const partB = '<%= questions.partBQuestion %>';
+      const partAmark = '<%= questions.partAMark %>';
+      const partBmark = '<%= questions.partBMark %>';
+      const subCode = '<%= questions.subjectCode %>';
+      const partADuri = '<%= questions.partAtime %>';
+
+     console.log(gap);
+     console.log(timetostart);
+
+   </script>
+ <script src="/exam1.js"></script>
+ <script src="/exam.js"></script>
+ <script src="/socket.io/socket.io.js"></script>
+ <script src="/chatstud.js"></script>
+ <script>
+
+ </script>
+  </body>  
+</html>

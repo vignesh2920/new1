@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docume1nt</title>
+    <link rel="stylesheet" href="/css/createtest.css">
+</head>
+<body>
+
+    <div class="ct-main-contt">
+    <div class="ct-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="ct-logo">
+        <div class="ct-logout-area">
+           <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="ct-logout-btn" type="submit">Log Out</button>
+         </form>
+      </div>
+    </div>
+
+      <% if(errMess) { %>
+         <div class="message red">
+            <b>NOTE :</b> <%= errMess %>
+         </div>
+      <% } else { %>
+      <div class="message">
+         <b>NOTE :</b> Be Carefull..!! You can't update Reg.no / ID and Teacher / Student But you can Delete the Account
+      </div>
+      <% } %>
+    <div class="ct-req-cont">
+        <form action="/createaccount" method="post" >
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="ct-form">
+               <div class="form-div">
+                   <div>
+                       <label for="Enter Reg. No.">Enter Reg. No. / ID</label>
+                       <input type="text" name="regno" id="Enter Reg. No." placeholder="Reg. No."  required>
+                    </div>
+                    <div>
+                       <label for="time">Enter Name</label>
+                       <input type="text" name="name" id="time" placeholder="Name" required>
+                    </div>
+               </div>
+
+               <div class="form-div">
+                   <div>
+                       <label for="Enter Emai">Enter Email</label>
+                        <input type="email" name="email" id="Enter Emai" placeholder="Email"  required>
+                    
+                    </div>
+                    <div>
+                      <label for="Enter Password">Enter Password(Dummy)</label>
+                      <input type="text" name="password" minlength="8" maxlength="12" id="Enter Password" placeholder="Password" required>
+
+                    </div>
+                </div>
+                <div class="form-div">
+                  <div>
+                   <label for="Enter Campus">Enter Campus</label>
+                   <input type="text" name="campus" id="Enter Campus" placeholder="Campus" required>
+                 </div>
+                 <div>
+                    <label for="Enter Department">Enter Department</label>
+                    <input type="text" name="department" id="Enter Department" placeholder="Department" required>
+                 </div>
+                </div>
+        
+             <div class="form-div">
+                <div>
+                  <label for="Enter Year">Enter Year (Number)</label>
+                  <input type="number" name="year" min="1" max="9" id="Enter Year" placeholder="Year in Number" required>
+                </div>
+                <div>
+                   <label for="Enter Section">Enter Section</label>
+                     <input type="text" name="section" id="Enter Section" maxlength="2" placeholder="Section" required>
+               </div>
+             </div>
+              <div class="form-div">
+                 <div>
+                    <label for="Number of Studend / Teacher">Cell number of Stud. / Teach.</label>
+                    <input type="number" name="number" id="Number of Studend / Teacher" placeholder="Number" required>
+                 </div> 
+
+              </div>
+              <div class="form-div">
+                <div>
+                   <label for="Name of Parent">Name of Parent</label>
+                   <input type="text" name="parentName" id="Name of Parent" placeholder="Name of Parent" required>
+                </div>
+                <div>
+                   <label for="parentNumber">Number of Prarent</label>
+                  <input type="number" name="parentNumber" id="parentNumber" placeholder="Number of Prarent" required>
+                </div>        
+             </div>
+
+             <div class="form-div">
+                <div class="aaaa">
+                   <label for="">Studend or Teacher</label>
+                   <div class="bbbb">
+                    <input type="radio" class="teacstud-foo" value="teacher" name="teachOrstud" id="teachh" required><label for="teachh">Teacher</label>  
+                   </div>
+                   <div class="bbbb">
+                    <input type="radio" class="teacstud-foo" value="student" name="teachOrstud" id="studdd" required><label for="studdd">Studend</label>  
+                   </div>    
+                </div>
+             </div>
+
+             <div class="gap-acc"></div>
+                    <% for(let i =0; i < 15;i++) { %>
+             <div class="form-div">
+                <div>
+                   <label for="<%= i+1 %>) Subject code"><%= i+1 %>) Subject code</label>
+
+                   <input 
+                   type="text" 
+                   name="sub-<%= i+1 %>-code" 
+                   id="<%= i+1 %>) Subject code" 
+                   placeholder="Subject code">
+       
+                  
+                </div>
+                <div>
+                   <label for="<%= i+1 %>) Subject Room"><%= i+1 %>) Subject Room</label>
+                     <input 
+                     type="text" 
+                     name="sub-<%= i+1 %>-room" 
+                     id="<%= i+1 %>) Subject Room" 
+                     placeholder="Subject Room">
+                    
+                </div>        
+             </div>
+             <% } %>
+           
+
+            
+              <div class="form-div">
+
+                 <div>
+                    <input type="hidden" name="staff"  id="staff" value="<%= createby %>" required readonly>
+                 </div>
+            </div>
+
+              <div class="ct-f-btn"><button type="submit">Start</button></div>
+          </div>
+         
+        </form>
+    </div>
+</div>
+<div class="ctt-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

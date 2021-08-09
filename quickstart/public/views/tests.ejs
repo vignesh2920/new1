@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tests.css">
+</head>
+<body>
+    <div class="tests-main">
+    <div class="tests-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="tests-logo">
+        <div class="tests-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="tests-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="tests-body">
+        <div class="tests-table">&ensp; Tests
+            <div id="t-table-cont">
+                <div class="t-t-c-table">
+                    <% if(techstud === 'TEACHER' ) { %>
+
+                        <div class="t-tab-head">
+                            <div class="t-t-he-sno">   <div>S.No</div> </div>
+                            <div class="t-t-he-test">  <div>Room ID</div> </div>
+                            <div class="t-t-he-start"> <div>Number of Studends</div></div>
+                            <div class="t-t-he-status"><div>Staff</div></div>
+                            <div class="t-t-he-status"><div>Room Link</div> </div>
+                        </div >
+
+                        <% for(let w=0; w < tests.length ; w++) { %>
+                            <% const totarr = Object.values(tests[w].students) %>
+                            <% const totlen = totarr.filter(word => word.RegNo !== 'non'); %>
+                            <div class="t-tab-data">
+                                <div class="t-t-bod-sno"><%= w+1 %></div>
+                                <div class="t-t-bod-thr"><%= tests[w].roomId %></div>
+                                <div class="t-t-bod-thr"><%= totlen.length %></div>
+                                <div class="t-t-bod-thr"><%= tests[w].teacher %></div>                         
+                                <div class="t-t-bod-thr"><a href="/test/<%= tests[w]._id %>/<%= userId %>/precheck?examRoom=<%= tests[w].roomId %>">Start</a> </div> 
+                            </div>
+                            <% } %>
+
+
+                        <% } else { %>
+                    <div class="t-tab-head">
+                      <div class="t-t-he-sno">   <div>S.No</div> </div>
+                      <div class="t-t-he-test">  <div>Exam Code</div> </div>
+                      <div class="t-t-he-start"> <div>Name</div></div>
+                      <div class="t-t-he-status"><div>Time</div> </div>
+                      <div class="t-t-he-status"><div>Status</div> </div>
+                    </div>
+
+                         <% for(let w=0; w < tests.length ; w++) { %>
+                            
+                    <div class="t-tab-data">
+                        <div class="t-t-bod-sno"><%= w+1 %></div>
+                        <div class="t-t-bod-thr"><%= tests[w].testcode %></div>
+                        <div class="t-t-bod-thr"><%= tests[w].testname %></div>
+                        <div class="t-t-bod-thr"><%= tests[w].testtime %></div>
+                       
+                        <% if(tests[w].allowing === 'ALLOW') { %>
+                         
+                        <div class="t-t-bod-thr"><a href="/test/<%= tests[w].testid %>/<%= tests[w].roomid %>/precheck?examCode=<%= tests[w].testcode %>">Start</a> </div>
+                        <% } else if(tests[w].allowing === 'NOTALLOW') { %>
+                           
+                            <div class="t-t-bod-thr"> NOT STARTED </div>
+                        <% } else { %>
+                          
+                            <div class="t-t-bod-thr"> Completed </div>
+                            <% } %>
+                    </div>
+                    <% } %>
+                   <% } %>
+                     <div class="t-tab-bbss"></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="tests-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

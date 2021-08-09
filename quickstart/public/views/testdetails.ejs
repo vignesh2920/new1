@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/testdetails.css">
+</head>
+<body>
+    <div class="exam-body-testdet">
+    <div class="testdet-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="testdet-logo">
+        <div class="testdet-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="testdet-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+    <div class="testdet-body">
+        <div class="td-body-cont">
+            <div class="td-cont-head">Test Details</div>
+            <div class="td-cont-body-exam">
+                <div class="td-c-b-exam-info">
+              
+                        <div class="td-c-b-e-i-nadu-namecode"> 
+                            <div class="td-c-b-e-i-he td-top-left">Exam Name / Code : </div> 
+                            <div class="td-c-b-e-i-he-cont">Database Managment Systom / 183010J</div>
+                        </div>
+                        <div class="td-c-b-e-i-nadu-duration"> 
+                            <div class="td-c-b-e-i-he">Duriation : </div> 
+                            <div class="td-c-b-e-i-he-cont">90 minute</div> 
+                        </div>
+                        <div class="td-c-b-e-i-mast-mark">     
+                            <div class="td-c-b-e-i-he">Marks : </div> 
+                            <div class="td-c-b-e-i-he-cont">100</div> 
+                        </div>
+                        <div class="td-c-b-e-i-mast-starttime">
+                            <div class="td-c-b-e-i-he td-bottom-right">Starting Time : </div> 
+                            <div class="td-c-b-e-i-he-cont">21 June 2021 10:00 AM (Indian Standed Time)</div> 
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="td-cont-body-gend">
+                <div class="td-c-b-gend-info">&emsp; General Instruction :
+                    <div class="td-d-b-g-i-gend">
+                     <span>Part-A</span> contains <span>30</span> Multiple Choice  Question .Each question carry <span>1 mark</span>  <br>
+                     <span>Part-B</span> contains <span>35</span> Multiple Choice  Question .Each question carry <span>2 mark</span>  <br>
+                      The maximum time for <span>Part-A</span> is <span>30 minute</span> <br>
+                      Once you go to <span>Part-B</span> you cannot come back to <span>Part-A</span>
+                    </div>
+                </div>
+            </div>
+            <div class="td-cont-body-staff">
+                <div class="td-c-b-staff-info">
+                    <div class="td-c-b-s-i-h1"><div>Staff Details</div> </div>
+                    <div class="td-c-b-s-i-h2"><div>Name :</div> <div class="td--ib">Email :</div> <div>Call No. : </div>  </div>
+                    <div class="td-c-b-s-i-h3"><div>Sanjay.K</div> <div class="td--ib">sanaj@gmail.com</div> <div>98765433210</div></div>
+                </div>
+            </div>
+            <div class="td-cont-btn-time">
+                <div class="td-c-btn-time-count">*Your text start in 30m 23s</div>
+            </div>
+        </div>
+    </div>
+    <div class="testdet-footer">&#169 Copyright SRM UNIVERSITY</div>
+</div>
+</body>
+</html>

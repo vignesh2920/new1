@@ -1,0 +1,170 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.qc-main-main {
+    min-height: 100vh;
+}
+
+.qc-nav {
+    height: 60px;
+    width: 100vw;
+    background-color: #063a7e;
+    display: flex;
+}
+
+.qc-logo {
+    margin-top: 5px;
+    margin-left: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.qc-logout-area {
+    margin-left: 1200px;
+    margin-top: 14px;
+}
+
+.qc-logout-btn {
+    font-weight: 500;
+    width: 80px;
+    height: 32px;
+    background-color: rgb(248, 255, 205);
+    border-radius: 8px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
+
+.qc-main-cont {
+    width: 100vw;
+    min-height: 300px;
+    display: grid;
+    place-items: center;
+}
+
+.qc-main-row {
+    display: flex;
+    margin-top: 40px;
+}
+
+.qc-m-item {
+    width: 250px;
+    height: 70px;
+    text-align: center;
+}
+
+.qc-it-head {
+  
+    font-size: 19px;
+    font-weight: 500;
+    color: #063a7e;
+}
+
+.qc-it-body {
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.qc-question {
+    margin-top: 100px;
+   display: grid;
+    width: 100vw;
+    place-items: center;
+}
+
+.qc-sets {
+    margin: 10px;
+    background-color: aliceblue;
+    text-align: center;
+    width: 1000px;
+    box-shadow: 0px 0px 5px rgba(6, 58, 126, 0.5);
+    padding-bottom: 20px;
+}
+
+
+.qc-hh{
+    padding-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #063a7e;
+}
+
+.qc-hpp {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #063a7e;
+}
+
+.qc-oneq {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+textarea {
+    padding: 10px;
+    border: 1px solid #063a7e;
+    border-radius: 5px;
+    resize: none;
+}
+
+textarea:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(6, 58, 126, 0.5);
+}
+
+.qc-btn-g {
+    display: grid;
+    place-items: center;
+}
+
+
+.qc-form-btn {
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: #063a7e;
+    margin-bottom: 100px;
+}
+
+.qc-footer{
+    margin-top: -47px;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+
+.qc-h-d {
+    display: none;
+}
+
+.qc-main-row--mess {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 50px;
+    width: 1000px;
+    height: 50px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border: 1px solid #063a7e;
+}
+
+.file-imgg {
+    width: 750px;
+    height: 30px;
+    border: 1px solid #063a7e;
+    background-color: white;
+    margin: 20px;
+
+}

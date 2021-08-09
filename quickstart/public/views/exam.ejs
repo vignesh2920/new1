@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/exam.css" />
+    <link rel="stylesheet" href="/css/testdetails.css">
+    
+  </head>
+  <body>
+
+    <div class="one-mega-div">
+
+      <!-- <div class="exam-body-testdet">
+        <div class="testdet-nav">
+          <img src="/Srmlogo1.jpg" alt="" srcset="" class="testdet-logo">
+          <div class="testdet-logout-area">
+            <form action="/logout" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="testdet-logout-btn" type="submit">Log Out</button>
+            </form>
+          </div>
+        </div>
+        <div class="testdet-body">
+            <div class="td-body-cont">
+                <div class="td-cont-head">Test Details</div>
+                <div class="td-cont-body-exam">
+                    <div class="td-c-b-exam-info">
+                  
+                            <div class="td-c-b-e-i-nadu-namecode"> 
+                                <div class="td-c-b-e-i-he td-top-left">Exam Name / Code : </div> 
+                                <div class="td-c-b-e-i-he-cont"><%= questions.subjectName %> / <%= questions.subjectCode %></div>
+                            </div>
+                            <div class="td-c-b-e-i-nadu-duration"> 
+                                <div class="td-c-b-e-i-he">Duriation : </div> 
+                                <div class="td-c-b-e-i-he-cont"><%= questions.examDuriation %> minute</div> 
+                            </div>
+                            <div class="td-c-b-e-i-mast-mark">     
+                                <div class="td-c-b-e-i-he">Marks : </div> 
+                                <div class="td-c-b-e-i-he-cont"><%= questions.total %></div> 
+                            </div>
+                            <div class="td-c-b-e-i-mast-starttime">
+                                <div class="td-c-b-e-i-he td-bottom-right">Starting Time : </div> 
+                                <div class="td-c-b-e-i-he-cont"><%= questions.examDate %> <%= questions.examTime %> (Indian Standed Time)</div> 
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="td-cont-body-gend">
+                    <div class="td-c-b-gend-info">&emsp; General Instruction :
+                        <div class="td-d-b-g-i-gend">
+                         <span>Part-A</span> contains <span><%= questions.partAQuestion %></span> Multiple Choice  Question .Each question carry <span><%= questions.partAMark %> mark</span>  <br>
+                         <span>Part-B</span> contains <span><%= questions.partBQuestion %></span> Multiple Choice  Question .Each question carry <span><%= questions.partBMark %> mark</span>  <br>
+                          The maximum time for <span>Part-A</span> is <span>30 minute</span> <br>
+                          Once you go to <span>Part-B</span> you cannot come back to <span>Part-A</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-cont-body-staff">
+                    <div class="td-c-b-staff-info">
+                        <div class="td-c-b-s-i-h1"><div>Staff Details</div> </div>
+                        <div class="td-c-b-s-i-h2"><div>Name :</div> <div class="td--ib">Email :</div> <div>Call No. : </div>  </div>
+                        <div class="td-c-b-s-i-h3"><div>Sanjay.K</div> <div class="td--ib">sanaj@gmail.com</div> <div>98765433210</div></div>
+                    </div>
+                </div>
+                <div class="td-cont-btn-time">
+                    <div class="td-c-btn-time-count">
+                      <div class="td-c-b-t-togg">
+                      *Your text start in <span class="td-min-mm">0</span>m <span class="td-min-mm">0</span>s
+                      </div>
+                      <div class="td-c-b-t-togg">
+                        <button onclick="toExammode()">Start</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testdet-footer">&#169 Copyright SRM UNIVERSITY</div>
+    </div> -->
+
+
+
+
+    <div class="exam-body-chat">
+      <div class="msg-info-of-ans">
+      </div>
+    <div class="online-info">
+      <div class="onl-off">
+        <div class="on-off-sta">Online</div>
+       <div class="on-off-cir"></div> 
+      </div>
+      <div class="staff-info">
+        <div class="staff-name">Sanajay.K</div>
+        <div class="staff-no"> <span>Call :</span> 9876543210</div>
+      </div>
+    </div>
+
+    <div class="div">
+      <div class="main-cont">
+        <div class="container">
+          <div class="head">
+            <div class="img-area">
+              <img src="/Srmlogo1.jpg" alt="LOGO" class="logo-img" />
+            </div>
+            <div class="time">
+              <div class="qty-info">
+                <span class="qtyinfo-no">QUESTION NO. : 1 [<%= questions.partBQuestion + questions.partAQuestion %>]</span>
+                <span class="qtyinfo-mark">MARKS - 1</span>
+                <span class="qtyinfo-part">PART - A[<%= questions.partAQuestion %>]</span> 
+              </div>
+              <div class="time-count">
+                TIME :
+                <span class="timecount">0</span> :
+                <span class="timecount">0</span> :
+                <span class="timecount">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="body-qty">
+      
+
+
+ 
+            <%   for(let i=0; i < questions.setA.length; i++){ %>
+              <% if( answed[i] && questions.setA[i].Q === answed[i].Q) { %>
+              <div class="qty-opts-save">
+                <form class="qtyForm">    
+                  <div class="question-area">
+                    <div class="question"><%= questions.setA[i].contentQ %>
+                      <% if(typeof questions.setA[i].imgQ === "undefined") { %>
+                      <% } else { %>
+                        <img src="/<%= questions.setA[i].imgQ %>" loading="lazy" alt="" srcset="">
+                      <% } %>
+                    </div>
+                  </div>
+                  <div class="opt-1">
+                    <% if( questions.setA[i].a === answed[i].ans) { %>
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].a %>"
+                      value="<%= questions.setA[i].contenta %>"
+                      checked
+                    />
+                    <% } else { %>
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].a %>"
+                      value="<%= questions.setA[i].contenta %>"
+                    />
+                    <% } %>
+                    <label for="<%= questions.setA[i].a %>"><div><%= questions.setA[i].contenta %></div>
+                      <% if(typeof questions.setA[i].imga === "undefined") { %>
+                        <% } else { %>
+                      <img src="/<%= questions.setA[i].imga %>" loading="lazy" alt="" srcset="">
+                      <% } %>
+                    </label>
+                  </div>
+                  <div class="opt-2">
+                    <% if( questions.setA[i].b === answed[i].ans) { %>
+                        <input
+                        type="radio"
+                        name="<%= questions.setA[i].Q %>"
+                        id="<%= questions.setA[i].b %>"
+                        value="<%= questions.setA[i].contentb %>"
+                        checked
+                      />
+                    <% } else { %>
+                       <input
+                       type="radio"
+                       name="<%= questions.setA[i].Q %>"
+                       id="<%= questions.setA[i].b %>"
+                       value="<%= questions.setA[i].contentb %>"
+                        />
+                    <% } %>
+                   
+                    <label for="<%= questions.setA[i].b %>"><div><%= questions.setA[i].contentb %></div>
+                      <% if(typeof questions.setA[i].imgb === "undefined") { %>
+                        <% } else { %>
+                      <img src="/<%= questions.setA[i].imgb %>" loading="lazy" alt="" srcset="">
+                      <% } %>
+                    </label>
+                  </div>
+                  <div class="opt-3">
+                    <% if( questions.setA[i].c === answed[i].ans) { %>
+                        <input
+                        type="radio"
+                        name="<%= questions.setA[i].Q %>"
+                        id="<%= questions.setA[i].c %>"
+                        value="<%= questions.setA[i].contentc %>"
+                        checked
+                      />
+                      <% } else { %>
+                        <input
+                        type="radio"
+                        name="<%= questions.setA[i].Q %>"
+                        id="<%= questions.setA[i].c %>"
+                        value="<%= questions.setA[i].contentc %>"
+                      />
+                      <% } %>
+                    <label for="<%= questions.setA[i].c %>"><div><%= questions.setA[i].contentc %></div>
+                      <% if(typeof questions.setA[i].imgc === "undefined") { %>
+                        <% } else { %>
+                      <img src="/<%= questions.setA[i].imgc %>" loading="lazy" alt="" srcset="">
+                      <% } %>
+                    </label>
+                  </div>
+                  <div class="opt-4">
+                    <% if( questions.setA[i].d === answed[i].ans) { %>
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].d %>"
+                      value="<%= questions.setA[i].contentd %>"
+                      checked
+                    />              
+                    <% } else { %>
+                      <input
+                      type="radio"
+                      name="<%= questions.setA[i].Q %>"
+                      id="<%= questions.setA[i].d %>"
+                      value="<%= questions.setA[i].contentd %>"
+                      >
+                      <% } %>
+                    <label for="<%= questions.setA[i].d %>"><div><%= questions.setA[i].contentd %></div>
+                      <% if(typeof questions.setA[i].imgd === "undefined") { %>
+                        <% } else { %>
+                      <img src="/<%= questions.setA[i].imgd %>" loading="lazy" alt="" srcset="">
+                      <% } %>
+                    </label>
+                  </div>
+                  <div class="question-btn">
+                    <button type="submit" class="save-btn">Save</button>
+                  </div>
+                  <input class="csrff" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                </form> 
+              </div>
+              <% } else { %>
+
+
+                <div class="qty-opts-save">
+                  <form class="qtyForm">    
+                    <div class="question-area">
+                      <div class="question"><div><%= questions.setA[i].contentQ %></div>
+                        <% if(typeof questions.setA[i].imgQ === "undefined") { %>
+                          <% } else { %>
+                            <img src="/<%= questions.setA[i].imgQ %>" loading="lazy" alt="" srcset="">
+                          <% } %></div>
+                    </div>
+                    <div class="opt-1">
+                        <input
+                        type="radio"
+                        name="<%= questions.setA[i].Q %>"
+                        id="<%= questions.setA[i].a %>"
+                        value="<%= questions.setA[i].contenta %>"
+                      />
+                      <label for="<%= questions.setA[i].a %>"><div><%= questions.setA[i].contenta %></div>
+                        <% if(typeof questions.setA[i].imga === "undefined") { %>
+                          <% } else { %>
+                        <img src="/<%= questions.setA[i].imga %>" loading="lazy" alt="" srcset="">
+                        <% } %>
+                      </label>
+                    </div>
+                    <div class="opt-2">
+                          <input
+                          type="radio"
+                          name="<%= questions.setA[i].Q %>"
+                          id="<%= questions.setA[i].b %>"
+                          value="<%= questions.setA[i].contentb %>"
+                        />
+                      <label for="<%= questions.setA[i].b %>"><div><%= questions.setA[i].contentb %></div>
+                        <% if(typeof questions.setA[i].imgb === "undefined") { %>
+                          <% } else { %>
+                        <img src="/<%= questions.setA[i].imgb %>" loading="lazy" alt="" srcset="">
+                        <% } %>
+                      </label>
+                    </div>
+                    <div class="opt-3">
+  
+                          <input
+                          type="radio"
+                          name="<%= questions.setA[i].Q %>"
+                          id="<%= questions.setA[i].c %>"
+                          value="<%= questions.setA[i].contentc %>"
+                        />
+                      <label for="<%= questions.setA[i].c %>"><div><%= questions.setA[i].contentc %></div>
+                        <% if(typeof questions.setA[i].imgc === "undefined") { %>
+                          <% } else { %>
+                        <img src="/<%= questions.setA[i].imgc %>" loading="lazy" alt="" srcset="">
+                        <% } %>
+                      </label>
+                    </div>
+                    <div class="opt-4">
+  
+                        <input
+                        type="radio"
+                        name="<%= questions.setA[i].Q %>"
+                        id="<%= questions.setA[i].d %>"
+                        value="<%= questions.setA[i].contentd %>"
+                      />              
+                      
+                      <label for="<%= questions.setA[i].d %>"><div><%= questions.setA[i].contentd %></div>
+                        <% if(typeof questions.setA[i].imgd === "undefined") { %>
+                          <% } else { %>
+                        <img src="/<%= questions.setA[i].imgd %>" loading="lazy" alt="" srcset="">
+                        <% } %>
+                      </label>
+                    </div>
+                    <div class="question-btn">
+                      <button type="submit" class="save-btn">Save</button>
+                    </div>
+                    <input class="csrff" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  </form> 
+                </div>
+
+
+                <% } %>
+              <% } %>
+          
+            
+          </div>
+
+          <div class="foot">
+            <div class="foot-btn">
+              <div class="foot-free"></div>
+              <div class="prevbtn" onclick="prevbtn()">&#8249;&#8249;</div>
+              <div class="nextbtn" onclick="nextbtn()">&#8250;&#8250;</div>
+            </div>
+            <div class="foot-copy">
+              <span class="copy-sym">&#169;</span> COPYRIGHT VIGNESH
+            </div>
+          </div>
+        </div>
+
+        <div class="chat">
+          <div class="chat-col" >
+            <div class="chat-head"><div class="chathead-chat">Chat</div></div>
+            <div class="chat-container" id="chatst"></div>
+            <div class="chat-foot">
+                <form id="chat-form">
+                  <input 
+                  class="chat-input"
+                  id="msg"
+                  type="text"
+                  placeholder="Enter Message"
+                  required
+                  autocomplete="off">
+                  <button class="chat-btn">&#10148;</button>
+                </form>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+      
+     </div>
+
+
+</div>
+
+<div class="war-mod-bg">
+  <div class="war-mod-ar">
+     <div class="war-mod-1">**WARNING**</div>
+     <div class="war-mod-2">0</div>
+     <div class="war-mod-3">Pleace move to test mode</div>
+     <div class="war-mod-4" onclick="fullsc()">Test Mode</div>
+     <div id="fi11"></div>
+     
+  </div>
+</div>
+
+<div>
+  <form action="/tests" method="get">
+  <button style="display: none;" id="recompl" type="submit">tests</button></form>
+</div>
+
+
+    <script>
+
+
+       
+       const stopandstart = document.getElementsByClassName('td-c-b-t-togg');
+       const maincont = document.getElementsByClassName('one-mega-div')[0].children;
+      const timecount = document.getElementsByClassName('timecount');
+      const timetostart = document.getElementsByClassName('td-min-mm');
+      const msginfoofans = document.getElementsByClassName('msg-info-of-ans')[0];
+     
+
+      // console.log(stopandstart);
+      // stopandstart[0].style.display = 'none'; // 222
+      // maincont[1].style.display = 'none'; // 222
+      const severtime = '<%= time %>';
+      let clientcount = +severtime;
+      let gap = +severtime;
+      let starttime;
+      const partA = '<%= questions.partAQuestion %>';
+       const partB = '<%= questions.partBQuestion %>';
+       const partAmark = '<%= questions.partAMark %>';
+       const partBmark = '<%= questions.partBMark %>';
+       console.log(partA);
+       console.log(gap);
+      
+
+
+
+       
+      
+
+
+
+
+
+
+
+
+       const bodycalss = document.getElementsByClassName('qty-opts-save');
+const savebtn = document.getElementsByClassName('save-btn');
+const qtyForm = document.getElementsByClassName('qtyForm');
+const qtyinfo = document.getElementsByClassName('qty-info')[0].children;
+const onoffline = document.getElementsByClassName('onl-off')[0];
+const csrff = document.getElementsByClassName('csrff');
+
+
+for (let formLoopq = 0; formLoopq < qtyForm.length; formLoopq++) {
+  for (let i = 1; i < 5; i++) {
+  if (qtyForm[formLoopq].children[i].children[0].checked) {   
+        qtyForm[formLoopq].children[5].children[0].style.backgroundColor = 'lightgreen';
+      }
+    }
+}
+
+
+let qtycount = 0;
+let onoffstu = 0; // online=0 and offline=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.addEventListener('online',function(){
+  onoffstu = 0;
+  onoffline.children[0].innerText = 'Online';
+  onoffline.children[0].style.color = 'green';
+  onoffline.children[1].style.backgroundColor = 'lightgreen';
+});
+
+window.addEventListener('offline',function(){
+  onoffstu = 1;
+  onoffline.children[0].innerText = 'Offline';
+  onoffline.children[0].style.color = 'red';
+  onoffline.children[1].style.backgroundColor = 'red';
+});
+
+
+for (let j = 0; j < bodycalss.length; j++) {
+  bodycalss[j].style.display = 'none';
+}
+bodycalss[0].style.display = 'block';  //22222
+
+
+
+
+// if (+timecount[1].innerText < 14) {
+//    qtycount = +partA;   
+//    qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+//    if (qtycount < +partA) {
+//      qtyinfo[1].innerText = `MARKS - ${partAmark}`;
+//      qtyinfo[2].innerText = `PART - A[${partA}]`;
+//    }
+//    else{
+//      qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+//      qtyinfo[2].innerText = `PART - B[${partB}]`;
+//    }     
+//    for (let i = 0; i < bodycalss.length; i++) {
+//      bodycalss[i].style.display = 'none';
+//    }
+//    bodycalss[qtycount].style.display = 'block';
+// }
+
+
+
+
+
+
+
+
+function prevbtn() {
+  if (onoffstu === 0) {
+    if (+timecount[1].innerText < 14) {
+      if (qtycount > 0) {
+        qtycount--;   
+        qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+        if (qtycount < +partA) {
+          qtyinfo[1].innerText = `MARKS - ${partAmark}`;
+          qtyinfo[2].innerText = `PART - A[${partA}]`;
+        }
+        else{
+          qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+          qtyinfo[2].innerText = `PART - B[${partB}]`;
+        }     
+        for (let i = 0; i < bodycalss.length; i++) {
+          bodycalss[i].style.display = 'none';
+        }
+        bodycalss[qtycount].style.display = 'block';
+      }
+    } else{
+      if (qtycount < +partA) {
+        qtycount = +partA;
+        console.log(qtycount);
+        qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+        qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+        qtyinfo[2].innerText = `PART - B[${partB}]`;
+        for (let i = 0; i < bodycalss.length; i++) {
+          bodycalss[i].style.display = 'none';
+        }
+        bodycalss[+partA ].style.display = 'block';  
+    }else{
+      if (qtycount > +partA ) {
+        qtycount--;   
+        qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+  
+        for (let i = 0; i < bodycalss.length; i++) {
+          bodycalss[i].style.display = 'none';
+        }
+        bodycalss[qtycount].style.display = 'block';
+      }
+    }
+    }
+  } 
+}
+
+function nextbtn() {
+  if (onoffstu === 0) {
+    if (+timecount[1].innerText < 14) {
+      if (qtycount < bodycalss.length - 1) {
+        qtycount++;
+        qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+        if (qtycount < +partA) {
+          qtyinfo[1].innerText = `MARKS - ${partAmark}`;
+          qtyinfo[2].innerText = `PART - A[${partA}]`;
+        }
+        else{
+          qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+          qtyinfo[2].innerText = `PART - B[${partB}]`;
+        }
+        for (let i = 0; i < bodycalss.length; i++) {
+          bodycalss[i].style.display = 'none';
+        }
+       // console.log(timecount[1].innerText);
+        bodycalss[qtycount].style.display = 'block';
+      }   
+    } else {
+      if (qtycount < +partA) {
+          qtycount = +partA;
+          qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+          qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+          qtyinfo[2].innerText = `PART - B[${partB}]`;
+          for (let i = 0; i < bodycalss.length; i++) {
+            bodycalss[i].style.display = 'none';
+          }
+          bodycalss[+partA ].style.display = 'block';  
+      } else {
+        if (qtycount < bodycalss.length - 1) {
+          console.log(qtycount);
+          qtycount++;
+          qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+         
+          for (let i = 0; i < bodycalss.length; i++) {
+            bodycalss[i].style.display = 'none';
+          }
+         // console.log(timecount[1].innerText);
+          console.log(qtycount)
+          bodycalss[qtycount].style.display = 'block';
+        }
+      }
+
+    } 
+  }
+}
+
+
+for (let formLoop = 0; formLoop < qtyForm.length; formLoop++) {
+  qtyForm[formLoop].addEventListener('submit', function (e) {
+    e.preventDefault();
+    let name = qtyForm[formLoop].children[2].children[0].name;
+   
+        for (let i = 1; i < 5; i++) {
+      if (qtyForm[formLoop].children[i].children[0].checked) {
+        
+        let choose;
+        let csurfname;
+        let csurfcode;
+        csurfname = qtyForm[formLoop].children[6].name;
+  
+        console.log(csurfname);
+        csurfcode = qtyForm[formLoop].children[6].value;
+        choose =qtyForm[formLoop].children[i].children[0].id;
+        
+        if (onoffstu === 0) {
+        qtyForm[formLoop].children[5].children[0].style.backgroundColor = 'lightgreen';
+      fetch('/s', { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }, 
+      body: `${csurfname}=${csurfcode}&${name}=${choose}`,
+    }).then(response => response.json())
+    .then(data => {
+      console.log('Success:', data.status);
+      if(data.status === "OKSucc"){
+        const div = document.createElement('div');
+        div.classList.add('succ-fail-msg');
+        div.innerText = `Succesfully Saved ${choose}`; 
+        document.querySelector('.msg-info-of-ans').append(div);
+        let mesufa = setTimeout(function() {  div.parentNode.removeChild(div);
+            clearTimeout(mesufa) }, 4000);
+      }
+      if (data.status === "/tests") {
+        window.location.href = data.status;
+      }
+    
+    })
+    .catch((error) => {
+      console.error('Error:', error); 
+    });
+  } 
+      }
+    } 
+  });
+}
+
+
+
+
+
+
+
+function toExammode() {
+    maincont[0].style.display = 'none';
+    maincont[1].style.display = 'flex';
+    console.log(+timecount[1].innerText);
+    if (+timecount[1].innerText > 13) {
+      qtycount = +partA;
+    console.log(qtycount);
+    qtyinfo[0].innerText = `QUESTION NO. : ${qtycount + 1} [${+partA + +partB}]`;
+    qtyinfo[1].innerText = `MARKS - ${partBmark}`;
+    qtyinfo[2].innerText = `PART - B[${partB}]`;
+    for (let i = 0; i < bodycalss.length; i++) {
+      bodycalss[i].style.display = 'none';
+    }
+    bodycalss[+partA ].style.display = 'block';  
+    }
+   
+  }
+
+
+
+
+  const username = "<%= user %>";
+ const room = "<%= room %>";
+
+  let warn = 0;
+  let warnfun;
+  let starCont;
+  const warniarea = document.getElementsByClassName('war-mod-bg');
+  const warnicont = document.getElementsByClassName('war-mod-2')[0];
+  const warnitexxt = document.getElementsByClassName('war-mod-3')[0];
+  const windowhight = +window.screen.height;
+  const windowwidth = +window.screen.width;
+
+  const ddd = document.getElementById('fi11');
+
+  document.addEventListener('visibilitychange', () => {
+    const msgs = document.getElementById('msg');
+        msgs.value = `-SC-${username}`
+        document.getElementsByClassName('chat-btn')[0].click();
+        warniarea[0].style.display = 'grid';
+      warnfun = setInterval(function () {
+      
+      if (starCont !== 0) {
+        let during = Date.now();
+        let times = Math.floor((+during - +starCont) / 1000);
+      warnicont.textContent = times;
+      }
+     
+    }, 1000);  
+});
+
+
+
+
+  function fullsc() {
+  warn = 0;
+  warniarea[0].style.display = 'none';
+  warnicont.textContent = 0;
+  document.documentElement.requestFullscreen().catch((e) => {
+    console.log(e);
+  });
+}
+
+
+function warning(val) {
+  console.log(val);
+  ddd.innerText = `${val} + ${warn}`;
+  console.log(warn , val)
+  if (warn === 0 && val !== 0) {
+    warn = val;
+    console.log(warn , val)
+    starCont = Date.now();
+  }
+}
+
+
+document.addEventListener('fullscreenchange', (event) => {
+  if (document.fullscreenElement) {
+    clearInterval(warnfun);
+    warn = 0;
+    starCont = 0;
+    warnicont.textContent = 0;
+    warning(0);
+  } else {
+    warning(1);
+  }
+});
+
+
+
+
+window.onresize = function () {
+  if (windowwidth === +window.innerWidth) {
+    clearInterval(warnfun);
+  }
+};
+
+
+
+
+console.log(warn);
+   function countdown() {
+
+
+    console.log("warn");
+    console.log(warn);
+     const second = 1000;
+     const minute = second * 60;
+     const hour = minute * 60;
+     const day = hour * 24;
+
+     const textday = Math.floor( gap / day ) ;
+     const texthour = Math.floor(( gap % day ) / hour );
+     const textminute = Math.floor(( gap % hour ) / minute );
+     const textsecond = Math.floor(( gap % minute ) / second );
+
+     if (+windowwidth > 1000) {
+
+      if ((windowwidth * 0.94) > window.outerWidth  || ((windowhight * 0.94) > window.outerHeight) ){
+
+        const msgs = document.getElementById('msg');
+       msgs.value = `-SS-${username}`
+       document.getElementsByClassName('chat-btn')[0].click();  
+       warniarea[0].style.display = 'grid';
+      warnfun = setInterval(function () {
+      
+      if (starCont !== 0) {
+        let during = Date.now();
+        let times = Math.floor((+during - +starCont) / 1000);
+      warnicont.textContent = times;
+      }
+     
+    }, 1000);    
+console.log("1q");
+    
+     }
+       
+     } else {
+       console.log('ele')
+      if (window.screen.width !== window.outerWidth || ((window.screen.height * 0.84) > window.outerHeight) ){
+        console.log(window.screen.width , window.outerWidth);
+        console.log("1sq");
+        const msgs = document.getElementById('msg');
+       msgs.value = `-SS-${username}`
+       document.getElementsByClassName('chat-btn')[0].click();  
+       warniarea[0].style.display = 'grid';
+      warnfun = setInterval(function () {
+      
+      if (starCont !== 0) {
+        let during = Date.now();
+        let times = Math.floor((+during - +starCont) / 1000);
+      warnicont.textContent = times;
+      }
+     
+    }, 1000);   
+     }
+     }
+
+   if(!document.fullscreenElement) {
+    warning(1);
+  }
+
+
+     if (warn > 0) {
+    warnitexxt.textContent = "Pleace move to test mode";
+      if (warn === 40) {
+       const msgs = document.getElementById('msg');
+       msgs.value = `-SS-${username}`
+       document.getElementsByClassName('chat-btn')[0].click();      
+       }
+
+     if(warn === 30){
+      }
+
+     if(warn === 50){
+          const msgs = document.getElementById('msg');
+        msgs.value = `-SC-${username}`
+        document.getElementsByClassName('chat-btn')[0].click();
+        }
+
+      if (+warnicont.textContent > 10) {
+        console.log('feeeaa')
+          const msgs = document.getElementById('msg');
+  msgs.value = `-C-${username}`
+   document.getElementsByClassName('chat-btn')[0].click();
+     
+
+    }
+
+      warniarea[0].style.display = 'grid';
+      warnfun = setInterval(function () {
+      
+      if (starCont !== 0) {
+        let during = Date.now();
+        let times = Math.floor((+during - +starCont) / 1000);
+      warnicont.textContent = times;
+      }
+     
+    }, 1000);
+
+     }
+
+     if (gap < 0) {
+       starttime = gap * -1;
+       timecount[0].innerText = Math.floor(( starttime % day ) / hour );
+       timecount[1].innerText = Math.floor(( starttime % hour ) / minute );
+       timecount[2].innerText = Math.floor(( starttime % minute ) / second );
+
+       if (starttime > 3600000) {
+        clearInterval(timeeamdur);
+        window.location.href = "/tests";
+     
+       }
+
+     }
+     if (gap > 0) {
+
+      // uncomment in production
+
+   //  timetostart[0].innerText = textminute;
+   //  timetostart[1].innerText = textsecond;
+     }
+
+     console.log(gap);
+
+
+     gap = gap - second ;
+     
+    //  if (condition) {
+       
+    //  }
+
+
+
+   }
+    
+  let timeeamdur = setInterval(countdown,1000);
+
+
+
+    </script>
+ <script src="/socket.io/socket.io.js"></script>
+      <script src="/chatstud.js"></script>
+
+
+
+  </body>
+</html>

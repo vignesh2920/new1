@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/tests.css">
+</head>
+<body>
+    <div class="tests-main">
+    <div class="tests-nav">
+        <img src="/Srmlogo1.jpg" alt="" srcset="" class="tests-logo">
+        <div class="tests-logout-area">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="tests-logout-btn" type="submit">Log Out</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="tests-body">
+        <div class="tests-table">&ensp; Tests
+            <div id="t-table-cont">
+                <div class="t-t-c-table">
+                    <div class="t-tab-head">
+                      <div class="t-t-he-sno">   <div>S.No</div> </div>
+                      <div class="t-t-he-test">  <div>Exam Code</div> </div>
+                      <div class="t-t-he-start"> <div>Exam Name</div> </div>
+                      <div class="t-t-he-status"><div>Time</div> </div>
+                      <div class="t-t-he-status"><div>View or Update</div> </div>
+                    </div>
+
+                    <% for(let i=0; i < listOfQuest.length ; i++) { %>
+                    <% if((i % 2)===0) { %>
+                    <div class="t-tab-data">
+                        <div class="t-t-bod-sno"><%= listOfQuest[i].sno %></div>
+                        <div class="t-t-bod-thr"><%= listOfQuest[i].subjectCode %></div>
+                        <div class="t-t-bod-thr"><%= listOfQuest[i].subjectName %></div>
+                        <div class="t-t-bod-thr"><%= listOfQuest[i].time %></div>
+                        <div class="t-t-bod-thr"><a href="/updatequestion/<%= listOfQuest[i].linkId %>/<%= listOfQuest[i].subjectCode %>">Click</a></div>
+                    </div>
+                        <% } else { %>
+                            <div class="t-tab-datab">
+                                <div class="t-t-bod-sno"><%= listOfQuest[i].sno %></div>
+                                <div class="t-t-bod-thr"><%= listOfQuest[i].subjectCode %></div>
+                                <div class="t-t-bod-thr"><%= listOfQuest[i].subjectName %></div>
+                                <div class="t-t-bod-thr"><%= listOfQuest[i].time %></div>
+                                <div class="t-t-bod-thr"><a href="/updatequestion/<%= listOfQuest[i].linkId %>/<%= listOfQuest[i].subjectCode %>">Click</a></div>
+                            </div>
+                        <% } %>
+                        <% } %>
+                     <div class="t-tab-bbss"></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="tests-footer">&#169 Copyright SRM UNIVERSITY</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | SRM UNIVERSITY</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+     <div class="login-body">
+         <div class="login-container">
+            <img loading="lazy" src="loginlogo.png" alt="" srcset="" class="login-header">
+            <div class="login-form">
+                <div class="log-form-text">Log In</div>
+                <form action="/login" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div><label for="login-email">Reg. No.</label></div>
+                    <div><input type="text" name="regno" class="login-input" id="login-email" minlength="12"  placeholder="Enter your reg.no"></div>
+                    <div><label for="login-pass">Password</label></div>
+                    <div><input type="password" name="password" class="login-input" id="login-pass" minlength="8" maxlength="12"  placeholder="Enter your password"></div>
+                   
+                    <div><button type="submit" class="login-btn">Login</button></div>
+                </form>
+            </div>
+            <div class="login-reg-for">
+                <a href="/ForgotPassword">Forgot Password ?</a>
+            </div>
+
+            <% if(errorMess) { %>
+                <div class="log-err"><%= errorMess %></div>
+                <% } %> 
+           
+         </div>
+         <div class="login-footer">&#169 Copyright SRM UNIVERSITY</div>
+     </div>
+
+</body>
+</html>

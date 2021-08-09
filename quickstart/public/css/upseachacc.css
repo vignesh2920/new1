@@ -1,0 +1,135 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    overflow-y: hidden;
+}
+
+.upseacc-nav {
+    height: 60px;
+    width: 100vw;
+    background-color: #063a7e;
+    display: flex;
+}
+
+.upseacc-logo {
+    margin-top: 5px;
+    margin-left: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.upseacc-logout-area {
+    margin-left: 1200px;
+    margin-top: 14px;
+}
+
+.upseacc-logout-btn {
+    font-weight: 500;
+    width: 80px;
+    height: 32px;
+    background-color: rgb(248, 255, 205);
+    border-radius: 8px;
+    border: 1px solid royalblue;
+    cursor: pointer;
+}
+
+.upseacc-body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.upseacc-container{
+    height: 90vh;
+}
+
+
+
+.upseacc-form{
+    width: 320px;
+    height: 520px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.upseacc-form-text{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+label {
+
+    margin-left: 30px;
+    font-weight: 400;
+}
+
+.upseacc-input{
+    margin-top: 4px;
+    margin-left: 26px;
+    width: 250px;
+    height: 15px;
+    padding: 10px;
+    border: 1px solid #063a7e;
+    border-radius: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(6, 58, 126, 0.5);
+}
+
+.upseacc-btn{
+    margin-left: 130px;
+    margin-top: 60px;
+    color: white;
+    width: 70px;
+    height: 35px;
+    background-color: #063a7e;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.upseacc-reg-for{
+    margin-top: 10px;
+}
+
+
+.upseacc-footer{
+    padding-top: 10px;
+    text-align: center;
+    position: fixed;
+    color: white;
+    bottom: 0;
+    width: 100vw;
+    height: 37px;
+    background-color: #063a7e;
+}
+
+.mess-ups {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    border: 1px solid darkred;
+    background-color: rgb(255, 195, 195);
+    border-radius: 10px;
+    width: 320px;
+    height: 40px;
+}
